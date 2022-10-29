@@ -8,7 +8,9 @@ import {
   Nunito_600SemiBold,
   Nunito_700Bold
 } from '@expo-google-fonts/nunito';
-import AppLoading from 'expo-app-loading';
+import { PasswordAppContextProvider } from './src/context/PasswordApp/provider';
+import { Loading } from './src/components/Loading/Loading';
+import FlashMessage from 'react-native-flash-message';
 
 export default function App() {
 
@@ -20,13 +22,16 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />
+    return <Loading />
   }
 
   return (
     <React.Fragment>
-      <Routes />
+      <PasswordAppContextProvider>
+        <Routes />
+      </PasswordAppContextProvider>
       <StatusBar style="auto" />
+      <FlashMessage position="top" />
     </React.Fragment>
   );
 }
