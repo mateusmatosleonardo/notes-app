@@ -2,9 +2,11 @@ import {
   ColorValue,
   KeyboardTypeOptions,
   NativeSyntheticEvent,
+  ReturnKeyTypeOptions,
   StyleProp,
   TextInput,
   TextInputFocusEventData,
+  TextInputSubmitEditingEventData,
   TextStyle,
 } from "react-native";
 
@@ -24,4 +26,8 @@ export interface InputProps {
   onFocus?:
     | ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void)
     | undefined;
+  onSubmitEditing?:
+    | ((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void)
+    | undefined;
+  returnKeyType?: ReturnKeyTypeOptions | undefined;
 }

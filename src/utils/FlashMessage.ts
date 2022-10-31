@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from "react-native";
-import FlashMessage, { showMessage } from "react-native-flash-message";
+import { showMessage } from "react-native-flash-message";
 
 interface FlashMessageProps {
   title: string;
@@ -18,6 +18,11 @@ export function flashMessage({
     message: title,
     description: description,
     type: type,
-    style: [style, { marginTop: 28, marginHorizontal: 22, borderRadius: 6 }],
+    titleStyle: { fontFamily: "Nunito_700Bold" },
+    textStyle: { fontFamily: "Nunito_400Regular" },
+    style: [
+      style,
+      { marginTop: 28, marginHorizontal: 22, borderRadius: 6, paddingTop: 0 },
+    ],
   });
 }

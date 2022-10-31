@@ -1,3 +1,3 @@
 export interface HeaderProps {
-  onPress: () => void;
+  onPress?: () => void;
 }

@@ -1,64 +1,37 @@
-import React, { useRef, useState, useEffect, useContext } from 'react';
+import * as S from './styles';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './schema';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import { styles } from './CommonStyle';
-import { schema } from './schema';
-import { PasswordAppScreenProps } from './types';
-import * as S from './styles';
-import { PasswordAppContext } from '../../context/PasswordApp/PasswordAppContext';
 import { Loading } from '../../components/Loading/Loading';
-import { showMessage } from 'react-native-flash-message';
-import { flashMessage } from '../../utils/FlashMessage';
+import { RegisterScreenProps } from './types';
+import { PasswordAppContext } from '../../context/PasswordApp/PasswordAppContext';
 
-export function PasswordApp() {
+export function Register() {
 
   // const code1Ref = useRef<TextInput>(null);
   // const code2Ref = useRef<TextInput>(null);
   // const code3Ref = useRef<TextInput>(null);
   // const code4Ref = useRef<TextInput>(null);
-  // const [active, setActive] = useState(0);
 
-  const { handleCreatePasswordApp,
-    getPasswordApp, pass, disabled } = useContext(PasswordAppContext);
+  const { handleSignUp,
+    pass,
+    disabled } = useContext(PasswordAppContext);
 
-  const navigation = useNavigation<PasswordAppScreenProps>();
+  const navigation = useNavigation<RegisterScreenProps>();
 
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      first: "",
-      second: "",
-      third: "",
-      four: ""
+      firstPin: "",
+      secondPin: "",
+      thirdPin: "",
+      fourPin: ""
     }
   });
-
-  // useEffect(() => {
-  //   getPasswordApp();
-  // }, []);
-
-  // useEffect(() => {
-  //   if (active === 1) {
-  //     code1Ref.current?.focus();
-  //   } else if (active === 2) {
-  //     code2Ref.current?.focus();
-  //   } else if (active === 3) {
-  //     code3Ref.current?.focus();
-  //   } else if (active === 4) {
-  //     code4Ref.current?.focus();
-  //   } else if (active === 5) {
-  //     code4Ref.current?.focus();
-  //   }
-  // }, [active]);
-
-  // console.log('vindo duas vezes', pass);
-
-  function testeFlashMessage() {
-    flashMessage({ title: 'Teste', description: 'des', type: 'success' })
-  }
 
   return (
     <React.Fragment>
@@ -75,23 +48,24 @@ export function PasswordApp() {
             <S.WrapperInput>
               <Controller
                 control={control}
-                name='first'
+                name='firstPin'
                 render={({ field: { onChange, onBlur, value } }) => (
                   <Input
                     value={value}
                     onBlur={onBlur}
                     onChangeText={onChange}
                     secureTextEntry
+                    returnKeyType='next'
                     maxLength={1}
                     keyboardType='numeric'
-                    style={[styles.input, {
-                      borderColor: errors.first && '#ff375b'
+                    style={[S.styles.input, {
+                      borderColor: errors.firstPin && '#ff375b'
                     }]} />
                 )}
               />
               <Controller
                 control={control}
-                name='second'
+                name='secondPin'
                 render={({ field: { onChange, onBlur, value } }) => (
                   <Input
                     value={value}
@@ -100,14 +74,14 @@ export function PasswordApp() {
                     secureTextEntry
                     maxLength={1}
                     keyboardType='numeric'
-                    style={[styles.input, {
-                      borderColor: errors.second && '#ff375b'
+                    style={[S.styles.input, {
+                      borderColor: errors.secondPin && '#ff375b'
                     }]} />
                 )}
               />
               <Controller
                 control={control}
-                name='third'
+                name='thirdPin'
                 render={({ field: { onChange, onBlur, value } }) => (
                   <Input
                     value={value}
@@ -116,14 +90,14 @@ export function PasswordApp() {
                     secureTextEntry
                     maxLength={1}
                     keyboardType='numeric'
-                    style={[styles.input, {
-                      borderColor: errors.third && '#ff375b'
+                    style={[S.styles.input, {
+                      borderColor: errors.thirdPin && '#ff375b'
                     }]} />
                 )}
               />
               <Controller
                 control={control}
-                name='four'
+                name='fourPin'
                 render={({ field: { onChange, onBlur, value } }) => (
                   <Input
                     value={value}
@@ -132,21 +106,21 @@ export function PasswordApp() {
                     secureTextEntry
                     maxLength={1}
                     keyboardType='numeric'
-                    style={[styles.input, {
-                      borderColor: errors.four && '#ff375b'
+                    style={[S.styles.input, {
+                      borderColor: errors.fourPin && '#ff375b'
                     }]} />
                 )}
               />
             </S.WrapperInput>
             <Button
               disabled={disabled}
-              style={[styles.btn, disabled ? { opacity: 0.7 } : {}]}
-              title='Continuar'
-              styleTitle={styles.titleBtn}
-              onPress={handleSubmit(handleCreatePasswordApp)}
+              style={[S.styles.btn, disabled ? { opacity: 0.7 } : {}]}
+              title={disabled ? 'Carregando...' : 'Salvar'}
+              styleTitle={S.styles.titleBtn}
+              onPress={handleSubmit(handleSignUp)}
             />
             <S.WrapperContinue>
-              <S.Pressable onPress={() => testeFlashMessage()}>
+              <S.Pressable onPress={() => navigation.navigate('SignIn')}>
                 <S.ContinueWithoutPassword>
                   Continuar sem senha
                 </S.ContinueWithoutPassword>

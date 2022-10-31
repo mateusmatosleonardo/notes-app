@@ -1,18 +1,19 @@
+import { StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.KeyboardAvoidingView`
   flex: 1;
-  padding: 0px 30px;
-  background-color: #fafafa;
   justify-content: center;
   align-items: center;
+  padding: 0px 30px;
+  background-color: #fafafa;
 `;
 
 export const WelcomeText = styled.Text`
-  padding: 14px 0px;
   font-family: "Nunito_500Medium";
   font-size: ${RFValue(26)}px;
+  padding: 14px 0px;
   color: #3175e6;
 `;
 
@@ -47,3 +48,29 @@ export const ContinueWithoutPassword = styled.Text`
   text-align: left;
   color: #3175e6;
 `;
+
+export const styles = StyleSheet.create({
+  input: {
+    fontSize: RFValue(20),
+    textAlign: "center",
+    width: 40,
+    height: 50,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: "#3175e6",
+  },
+  btn: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    padding: 10,
+    backgroundColor: "#3175e6",
+    borderRadius: 6,
+    marginTop: 32,
+  },
+  titleBtn: {
+    fontSize: RFValue(18),
+    fontFamily: "Nunito_600SemiBold",
+    color: "#fafafa",
+  },
+});

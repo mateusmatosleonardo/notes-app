@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Routes } from './src/routes/Routes';
+import { AuthRoutes } from './src/routes/AuthRoutes';
 import {
   useFonts,
   Nunito_400Regular,
@@ -11,6 +12,7 @@ import {
 import { PasswordAppContextProvider } from './src/context/PasswordApp/provider';
 import { Loading } from './src/components/Loading/Loading';
 import FlashMessage from 'react-native-flash-message';
+
 
 export default function App() {
 
@@ -28,7 +30,8 @@ export default function App() {
   return (
     <React.Fragment>
       <PasswordAppContextProvider>
-        <Routes />
+        {/* <Routes /> */}
+        <AuthRoutes />
       </PasswordAppContextProvider>
       <StatusBar style="auto" />
       <FlashMessage position="top" />

@@ -13,7 +13,7 @@ export function Header({ onPress }: HeaderProps) {
         </S.PhotoProfile>
         <S.WrapperText>
           <S.Title>Olá, {<S.Name>Mateus</S.Name>}</S.Title>
-          <S.Text>Segurança em primeiro lugar!</S.Text>
+          <S.Text>Sua segurança é nossa prioridade!</S.Text>
         </S.WrapperText>
       </S.WrapperProfile>
       <S.AddNewPassword onPress={onPress}>

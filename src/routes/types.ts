@@ -1,4 +1,5 @@
 export type RootStackParamsList = {
-  PasswordApp: undefined;
+  Register: undefined;
   Home: undefined;
+  SignIn: undefined;
 };
