@@ -47,7 +47,7 @@ export const Text = styled.Text`
 `;
 
 // trocar por outro botão
-export const AddNewPassword = styled.TouchableOpacity`
+export const AddNewPassword = styled.Pressable`
   padding: 16px;
   border: 1px solid #fafafa;
   border-radius: 4px;
