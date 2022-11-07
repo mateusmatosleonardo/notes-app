@@ -10,7 +10,7 @@ export function Header({ onPress }: HeaderProps) {
       <S.Wrapper>
         <S.WrapperProfile>
           <S.PhotoProfile>
-            <UserIcon name='user' color='#616060' size={28} />
+            <UserIcon name='user' color='#313030' size={28} />
           </S.PhotoProfile>
           <S.WrapperText>
             <S.Title>Olá, {<S.Name>Mateus</S.Name>}</S.Title>
