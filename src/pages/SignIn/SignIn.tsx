@@ -5,36 +5,38 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import { styles } from './CommonStyle';
-import KeyIcon from '@expo/vector-icons/MaterialCommunityIcons';
-import { PasswordAppContext } from '../../context/PasswordApp/PasswordAppContext';
+import { PasswordContext } from '../../context/Password/PasswordContext';
 import { schema } from './schema';
 import { EnterWithPasswordProps } from './types';
 import { useNavigation } from '@react-navigation/native';
+import KeyIcon from '@expo/vector-icons/MaterialCommunityIcons';
 
 export function SignIn() {
 
   const navigation = useNavigation<EnterWithPasswordProps>();
 
-  const { handleSignIn, getPasswordApp, pass } = useContext(PasswordAppContext);
+  const { handleSignIn, fetchPassword, password } = useContext(PasswordContext);
 
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      first: "",
-      second: "",
-      third: "",
-      four: ""
+      pin1: "",
+      pin2: "",
+      pin3: "",
+      pin4: ""
     }
   });
 
   useEffect(() => {
-    getPasswordApp();
+    fetchPassword();
   }, []);
+
+  console.log(password, 'pass aqui');
 
   return (
     <S.Container behavior="padding">
       <S.WrapperTitle>
-        <S.Title>Confirme sua senha</S.Title>
+        <S.Title>Entre com a senha</S.Title>
         <KeyIcon name='key-variant'
           color='#3175e6'
           size={22}
@@ -43,7 +45,7 @@ export function SignIn() {
       <S.WrapperInput>
         <Controller
           control={control}
-          name='first'
+          name='pin1'
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
               value={value}
@@ -53,13 +55,13 @@ export function SignIn() {
               maxLength={1}
               keyboardType='numeric'
               style={[styles.input, {
-                borderColor: errors.first && '#ff375b'
+                borderColor: errors.pin1 && '#ff375b'
               }]} />
           )}
         />
         <Controller
           control={control}
-          name='second'
+          name='pin2'
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
               value={value}
@@ -69,13 +71,13 @@ export function SignIn() {
               maxLength={1}
               keyboardType='numeric'
               style={[styles.input, {
-                borderColor: errors.second && '#ff375b'
+                borderColor: errors.pin2 && '#ff375b'
               }]} />
           )}
         />
         <Controller
           control={control}
-          name='third'
+          name='pin3'
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
               value={value}
@@ -85,13 +87,13 @@ export function SignIn() {
               maxLength={1}
               keyboardType='numeric'
               style={[styles.input, {
-                borderColor: errors.third && '#ff375b'
+                borderColor: errors.pin3 && '#ff375b'
               }]} />
           )}
         />
         <Controller
           control={control}
-          name='four'
+          name='pin4'
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
               value={value}
@@ -101,7 +103,7 @@ export function SignIn() {
               maxLength={1}
               keyboardType='numeric'
               style={[styles.input, {
-                borderColor: errors.four && '#ff375b'
+                borderColor: errors.pin4 && '#ff375b'
               }]} />
           )}
         />

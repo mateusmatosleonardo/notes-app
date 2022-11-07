@@ -73,4 +73,16 @@ export const styles = StyleSheet.create({
     fontFamily: "Nunito_600SemiBold",
     color: "#fafafa",
   },
+  // welcomeText: {
+  //   fontFamily: "Nunito_600SemiBold",
+  //   fontSize: RFValue(26),
+  //   paddingVertical: 14,
+  //   color: "#3175e6",
+  // },
+  // text: {
+  //   fontFamily: "Nunito_500Medium",
+  //   fontSize: RFValue(16),
+  //   textAlign: "center",
+  //   color: "#313030",
+  // },
 });
