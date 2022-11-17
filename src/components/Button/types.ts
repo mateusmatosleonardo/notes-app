@@ -11,7 +11,7 @@ export interface ButtonProps {
     | StyleProp<ViewStyle>
     | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>);
   onPress?: ((event: GestureResponderEvent) => void) | null | undefined;
-  title?: string | undefined;
+  title?: string | undefined | any;
   styleTitle?: StyleProp<TextStyle>;
   disabled?: boolean | null | undefined;
 }

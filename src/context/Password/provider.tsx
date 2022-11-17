@@ -34,12 +34,21 @@ export const PasswordContextProvider = ({ children }: IPasswordContext) => {
     }
   }
 
+  async function removeAllKeys() {
+    try {
+      await AsyncStorage.removeItem('@savepass')
+    } catch (e) {
+      console.log(e, 'erro ao deletar chave');
+    }
+  }
+
   return (
     <PasswordContext.Provider value={{
       password,
       setPassword,
       handleSignIn,
-      fetchPassword
+      fetchPassword,
+      removeAllKeys
     }}>
       {children}
     </PasswordContext.Provider>

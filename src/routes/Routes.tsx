@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { NavigationContainer, StackActions } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack";
 import { Home } from "../pages/Home/Home";
 import { SignIn } from "../pages/SignIn/SignIn";
 import { Register } from "../pages/Register/Register";
+import { PasswordContext } from "../context/Password/PasswordContext";
 
 const Stack = createStackNavigator();
 
 export function Routes() {
+
+  const { password, fetchPassword } = useContext(PasswordContext);
+
+  useEffect(() => {
+    fetchPassword();
+  }, []);
+
+  console.log('Pass aqui', password);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="SignUp"
+        // initialRouteName={password ? "SignIn" : "SignUp"}
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SignUp" component={Register} />
         <Stack.Screen name="SignIn" component={SignIn} />

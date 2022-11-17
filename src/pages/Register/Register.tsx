@@ -4,62 +4,46 @@ import { useNavigation } from '@react-navigation/native';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import { Loading } from '../../components/Loading/Loading';
-import { RegisterScreenProps } from './types';
+import { FormPass, RegisterScreenProps } from './types';
 import { PasswordContext } from '../../context/Password/PasswordContext';
-import { TextInput } from 'react-native';
 import { flashMessage } from '../../utils/FlashMessage';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './schema';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Eye from '@expo/vector-icons/Ionicons';
+import InformationIcon from '@expo/vector-icons/Ionicons';
+import { Alert, BackHandler } from 'react-native';
 
 export function Register() {
 
+  const [visible, setVisible] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
-  const pin1Ref = useRef<TextInput>(null);
-  const pin2Ref = useRef<TextInput>(null);
-  const pin3Ref = useRef<TextInput>(null);
-  const pin4Ref = useRef<TextInput>(null);
-
-  const [pin1, setPin1] = useState('');
-  const [pin2, setPin2] = useState('');
-  const [pin3, setPin3] = useState('');
-  const [pin4, setPin4] = useState('');
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
 
   const navigation = useNavigation<RegisterScreenProps>();
 
   const { password } = useContext(PasswordContext);
 
-  async function handleSignUp(): Promise<void> {
+  async function handleSignUp(newData: FormPass): Promise<void> {
     try {
-      if (pin1.trim() === ''
-        ||
-        pin2.trim() === ''
-        ||
-        pin3.trim() === ''
-        ||
-        pin4.trim() === '') {
-        return flashMessage({
-          message: 'Atenção',
-          description: 'Preencha todos os campos!',
-          type: 'danger'
-        });
-      }
-      const newData = {
-        pin1,
-        pin2,
-        pin3,
-        pin4
-      };
       setDisabled(true);
       await AsyncStorage.setItem('@savepass', JSON.stringify(newData));
       flashMessage({
         message: 'Sucesso',
-        description: 'Senha salva com sucesso!',
+        description: 'Senha criada com sucesso!',
         type: 'success'
       });
+      console.log(newData);
       setTimeout(() => {
-        setDisabled(false);
-        navigation.navigate('SignIn');
-      }, 1000);
+        navigation.navigate('Home');
+        setTimeout(() => {
+          setDisabled(false);
+        }, 500);
+      }, 1800);
     } catch (e) {
       flashMessage({
         message: 'Erro',
@@ -75,88 +59,79 @@ export function Register() {
       {
         password ?
           <S.Container behavior="padding">
-            <S.WelcomeText>
-              Seja bem vindo ao seu gerenciador de senhas!
-            </S.WelcomeText>
-            <S.Text></S.Text>
-            <S.Text>
-              Para a sua segurança, crie uma senha para acesso ao gerenciador!
-            </S.Text>
+            <S.Title>
+              Senha principal
+            </S.Title>
+            <S.DefaultText>
+              Essa senha é usada para proteger e acessar seus dados.
+              Você precisa inseri-la sempre que entrar no aplicativo.
+            </S.DefaultText>
             <S.WrapperInput>
-              <Input
-                ref={pin1Ref}
-                value={pin1}
-                onChangeText={(pin1) => {
-                  setPin1(pin1);
-                  if (pin1 === '') {
-                    pin2Ref.current?.focus();
-                  }
-                }}
-                secureTextEntry
-                returnKeyType='next'
-                maxLength={1}
-                keyboardType='number-pad'
-                style={[S.styles.input, {
-                  // borderColor: pin1.trim() === '' ? '#ff375b' : ''
-                }]} />
-              <Input
-                ref={pin2Ref}
-                value={pin2}
-                onChangeText={(pin2) => {
-                  setPin2(pin2);
-                  if (pin2 !== '') {
-                    pin3Ref.current?.focus();
-                  }
-                }}
-                secureTextEntry
-                maxLength={1}
-                keyboardType='number-pad'
-                style={[S.styles.input, {
-                  // borderColor: errors.secondPin && '#ff375b'
-                }]} />
-              <Input           // onBlur={onBlur}
-                ref={pin3Ref}
-                value={pin3}
-                onChangeText={(pin3) => {
-                  setPin3(pin3);
-                  if (pin3 !== '') {
-                    pin4Ref.current?.focus();
-                  }
-                }}
-                secureTextEntry
-                maxLength={1}
-                keyboardType='numeric'
-                style={[S.styles.input, {
-                  // borderColor: errors.thirdPin && '#ff375b'
-                }]} />
-              <Input
-                ref={pin4Ref}
-                value={pin4}
-                onChangeText={setPin4}
-                secureTextEntry
-                maxLength={1}
-                keyboardType='numeric'
-                style={[S.styles.input, {
-                  // borderColor: errors.fourPin && '#ff375b'
-                }]} />
+              <Controller
+                name='password'
+                control={control}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <S.InputArea>
+                    <Input
+                      value={value}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      secureTextEntry={!visible}
+                      returnKeyType='done'
+                      maxLength={12}
+                      placeholder='Senha'
+                      placeholderTextColor={errors.password ?
+                        '#ff375b' :
+                        '#595959'}
+                      style={[S.styles.input, {
+                        borderColor: errors.password ? '#ff375b' : '#595959'
+                      }]}
+                    />
+                    <S.PressableIcon
+                      onPress={() => setVisible(!visible)}
+                      style={S.styles.icon}>
+                      <Eye
+                        name={visible ? 'eye-off' : 'eye'}
+                        color='#616060'
+                        size={24} />
+                    </S.PressableIcon>
+                  </S.InputArea>
+                )}
+              />
+              <S.WrapperError>
+                {errors.password &&
+                  <S.TextError>
+                    {errors.password?.message}
+                  </S.TextError>}
+              </S.WrapperError>
             </S.WrapperInput>
             <Button
               disabled={disabled}
-              style={[S.styles.btn, disabled ? { opacity: 0.7 } : {}]}
-              title={disabled ? 'Carregando...' : 'Salvar'}
+              style={[S.styles.btn,
+              errors.password && { opacity: 0.7 },
+              disabled && { opacity: 0.7 }]}
+              title={disabled ? 'Carregando...' : 'Continuar'}
               styleTitle={S.styles.titleBtn}
-              onPress={() => handleSignUp()}
+              onPress={handleSubmit(handleSignUp)}
             />
-            <S.WrapperContinue>
-              <S.Pressable onPress={() => navigation.navigate('SignIn')}>
-                <S.ContinueWithoutPassword>
-                  Continuar sem senha
-                </S.ContinueWithoutPassword>
-              </S.Pressable>
-            </S.WrapperContinue>
+            <S.WrapperRecommendation>
+              <InformationIcon
+                name='information-circle-outline'
+                color='#3175e6'
+                size={22} />
+              <S.Recommendation>
+                Anote sua senha principal para não perder acesso aos seus dados!
+              </S.Recommendation>
+            </S.WrapperRecommendation>
           </S.Container>
           : <Loading />
       }
     </React.Fragment>
   );
 }
+
+// return flashMessage({
+//   message: 'Atenção',
+//   description: 'Preencha todos os campos!',
+//   type: 'danger'
+// });

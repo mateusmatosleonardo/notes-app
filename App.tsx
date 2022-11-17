@@ -1,5 +1,6 @@
 import 'react-native-reanimated';
-import React, { useEffect } from 'react';
+import React from 'react';
+import { ThemeProvider } from 'styled-components/native';
 import { StatusBar } from 'expo-status-bar';
 import { Routes } from './src/routes/Routes';
 import {
@@ -12,6 +13,7 @@ import {
 import { PasswordContextProvider } from './src/context/Password/provider';
 import { Loading } from './src/components/Loading/Loading';
 import FlashMessage from 'react-native-flash-message';
+import { theme } from './src/theme/theme';
 
 export default function App() {
 
@@ -28,11 +30,13 @@ export default function App() {
 
   return (
     <React.Fragment>
-      <PasswordContextProvider>
-        <Routes />
-      </PasswordContextProvider>
-      <StatusBar style="auto" />
-      <FlashMessage position="top" />
+      <ThemeProvider theme={theme}>
+        <PasswordContextProvider>
+          <Routes />
+        </PasswordContextProvider>
+        <StatusBar style="auto" />
+        <FlashMessage position="top" />
+      </ThemeProvider>
     </React.Fragment>
   );
 }

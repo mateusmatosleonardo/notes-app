@@ -15,7 +15,7 @@ export function SignIn() {
 
   const navigation = useNavigation<EnterWithPasswordProps>();
 
-  const { handleSignIn, fetchPassword, password } = useContext(PasswordContext);
+  const { handleSignIn, fetchPassword, password, removeAllKeys } = useContext(PasswordContext);
 
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -28,6 +28,7 @@ export function SignIn() {
   });
 
   useEffect(() => {
+    // removeAllKeys();
     fetchPassword();
   }, []);
 
