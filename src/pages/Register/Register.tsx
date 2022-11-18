@@ -1,5 +1,6 @@
 import * as S from './styles';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { BackHandler } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
@@ -13,7 +14,6 @@ import { schema } from './schema';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Eye from '@expo/vector-icons/Ionicons';
 import InformationIcon from '@expo/vector-icons/Ionicons';
-import { Alert, BackHandler } from 'react-native';
 
 export function Register() {
 
@@ -37,6 +37,7 @@ export function Register() {
         description: 'Senha criada com sucesso!',
         type: 'success'
       });
+      // remove debug
       console.log(newData);
       setTimeout(() => {
         navigation.navigate('Home');
@@ -53,6 +54,11 @@ export function Register() {
       console.log(e, 'error saving password!');
     }
   }
+
+  // useEffect(() => {
+  //   BackHandler.addEventListener('hardwareBackPress', () => true)
+  //   return () => BackHandler.removeEventListener('hardwareBackPress', () => true)
+  // }, []);
 
   return (
     <React.Fragment>
@@ -78,7 +84,7 @@ export function Register() {
                       onBlur={onBlur}
                       secureTextEntry={!visible}
                       returnKeyType='done'
-                      maxLength={12}
+                      maxLength={22}
                       placeholder='Senha'
                       placeholderTextColor={errors.password ?
                         '#ff375b' :
@@ -129,9 +135,3 @@ export function Register() {
     </React.Fragment>
   );
 }
-
-// return flashMessage({
-//   message: 'Atenção',
-//   description: 'Preencha todos os campos!',
-//   type: 'danger'
-// });

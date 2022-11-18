@@ -22,7 +22,7 @@ export function flashMessage({
     textStyle: { fontFamily: "Nunito_400Regular" },
     style: [
       style,
-      { marginTop: 28, marginHorizontal: 22, borderRadius: 6, paddingTop: 0 },
+      { marginTop: 32, marginHorizontal: 22, borderRadius: 6, paddingTop: 0 },
     ],
   });
 }

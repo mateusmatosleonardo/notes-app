@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { NavigationContainer, StackActions } from "@react-navigation/native"
+import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack";
 import { Home } from "../pages/Home/Home";
 import { SignIn } from "../pages/SignIn/SignIn";
@@ -16,7 +16,7 @@ export function Routes() {
     fetchPassword();
   }, []);
 
-  console.log('Pass aqui', password);
+  // console.log('Vindo muitas vezes?', password);
 
   return (
     <NavigationContainer>
@@ -26,7 +26,7 @@ export function Routes() {
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SignUp" component={Register} />
         <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={Home} options={{ gestureEnabled: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
