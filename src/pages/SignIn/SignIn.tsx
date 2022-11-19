@@ -1,17 +1,19 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import * as S from './styles';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import { styles } from './CommonStyle';
 import { PasswordContext } from '../../context/Password/PasswordContext';
 import { schema } from './schema';
 import { EnterWithPasswordProps } from './types';
 import { useNavigation } from '@react-navigation/native';
-import KeyIcon from '@expo/vector-icons/MaterialCommunityIcons';
+import Eye from '@expo/vector-icons/Ionicons';
 
 export function SignIn() {
+
+  const [visible, setVisible] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   const navigation = useNavigation<EnterWithPasswordProps>();
 
@@ -19,12 +21,6 @@ export function SignIn() {
 
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: {
-      pin1: "",
-      pin2: "",
-      pin3: "",
-      pin4: ""
-    }
   });
 
   useEffect(() => {
@@ -36,83 +32,45 @@ export function SignIn() {
   return (
     <S.Container behavior="padding">
       <S.WrapperTitle>
-        <S.Title>Entre com a senha</S.Title>
-        <KeyIcon name='key-variant'
-          color='#3175e6'
-          size={22}
-          style={{ marginLeft: 8 }} />
+        <S.Title>Nome do App</S.Title>
       </S.WrapperTitle>
       <S.WrapperInput>
         <Controller
           control={control}
-          name='pin1'
+          name='password'
           render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              value={value}
-              onBlur={onBlur}
-              onChangeText={onChange}
-              secureTextEntry
-              maxLength={1}
-              keyboardType='numeric'
-              style={[styles.input, {
-                borderColor: errors.pin1 && '#ff375b'
-              }]} />
-          )}
-        />
-        <Controller
-          control={control}
-          name='pin2'
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              value={value}
-              onBlur={onBlur}
-              onChangeText={onChange}
-              secureTextEntry
-              maxLength={1}
-              keyboardType='numeric'
-              style={[styles.input, {
-                borderColor: errors.pin2 && '#ff375b'
-              }]} />
-          )}
-        />
-        <Controller
-          control={control}
-          name='pin3'
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              value={value}
-              onBlur={onBlur}
-              onChangeText={onChange}
-              secureTextEntry
-              maxLength={1}
-              keyboardType='numeric'
-              style={[styles.input, {
-                borderColor: errors.pin3 && '#ff375b'
-              }]} />
-          )}
-        />
-        <Controller
-          control={control}
-          name='pin4'
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              value={value}
-              onBlur={onBlur}
-              onChangeText={onChange}
-              secureTextEntry
-              maxLength={1}
-              keyboardType='numeric'
-              style={[styles.input, {
-                borderColor: errors.pin4 && '#ff375b'
-              }]} />
+            <S.InputArea>
+              <Input
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                secureTextEntry={!visible}
+                returnKeyType='done'
+                maxLength={22}
+                placeholder='Senha'
+                placeholderTextColor={errors.password ?
+                  '#ff375b' :
+                  '#595959'}
+                style={[S.styles.input, {
+                  borderColor: errors.password ? '#ff375b' : '#595959'
+                }]} />
+              <S.PressableIcon
+                onPress={() => setVisible(!visible)}
+                style={S.styles.icon}>
+                <Eye
+                  name={visible ? 'eye-off' : 'eye'}
+                  color='#616060'
+                  size={24} />
+              </S.PressableIcon>
+            </S.InputArea>
           )}
         />
       </S.WrapperInput>
       <Button
-        style={styles.btn}
-        title='Confirmar'
-        styleTitle={styles.titleBtn}
-        onPress={handleSubmit(handleSignIn)}
+        style={S.styles.btn}
+        title='Desbloquear'
+        styleTitle={S.styles.titleBtn}
+        onPress={() => console.log('test')}
       />
     </S.Container>
   );

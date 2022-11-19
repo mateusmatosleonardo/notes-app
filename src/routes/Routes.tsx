@@ -12,11 +12,9 @@ export function Routes() {
 
   const { password, fetchPassword } = useContext(PasswordContext);
 
-  useEffect(() => {
-    fetchPassword();
-  }, []);
-
-  // console.log('Vindo muitas vezes?', password);
+  // useEffect(() => {
+  //   fetchPassword();
+  // }, []);
 
   // revome after debug 
   console.log('Passo 3 - Routes')
@@ -24,8 +22,8 @@ export function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        // initialRouteName="SignUp"
-        initialRouteName={password === "" ? "SignUp" : "SignIn"}
+        initialRouteName="SignIn"
+        // initialRouteName={password === "" ? "SignUp" : "SignIn"}
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SignUp" component={Register} />
         <Stack.Screen name="SignIn" component={SignIn} />
