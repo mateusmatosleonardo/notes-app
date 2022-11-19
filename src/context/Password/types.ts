@@ -7,7 +7,7 @@ export interface PasswordContextProps {
   // handleSignUp: (data: FormPass) => Promise<void>;
   handleSignIn: (data: FormPass) => void;
   fetchPassword: () => Promise<void>;
-  removeAllKeys: () => Promise<void>;
+  removeMasterKey: () => Promise<void>;
   // disabled?: boolean | null | undefined;
   // setDisabled?: React.Dispatch<React.SetStateAction<boolean>>;
 }

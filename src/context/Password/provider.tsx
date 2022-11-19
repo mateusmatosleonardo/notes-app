@@ -29,12 +29,12 @@ export const PasswordContextProvider = ({ children }: IPasswordContext) => {
           type: 'danger'
         });
       }
-    } catch (err) {
-      console.log(err);
+    } catch (e) {
+      console.log(e);
     }
   }
 
-  async function removeAllKeys() {
+  async function removeMasterKey(): Promise<void> {
     try {
       await AsyncStorage.removeItem('@savepass')
     } catch (e) {
@@ -51,7 +51,7 @@ export const PasswordContextProvider = ({ children }: IPasswordContext) => {
       setPassword,
       handleSignIn,
       fetchPassword,
-      removeAllKeys
+      removeMasterKey
     }}>
       {children}
     </PasswordContext.Provider>
