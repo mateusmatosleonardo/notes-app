@@ -29,7 +29,7 @@ export default function App() {
   }
 
   // revome after debug 
-  console.log('Passo 1')
+  console.log('Passo 1 - App')
 
   return (
     <React.Fragment>

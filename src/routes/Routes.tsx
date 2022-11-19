@@ -19,7 +19,7 @@ export function Routes() {
   // console.log('Vindo muitas vezes?', password);
 
   // revome after debug 
-  console.log('Passo 2')
+  console.log('Passo 3 - Routes')
 
   return (
     <NavigationContainer>
