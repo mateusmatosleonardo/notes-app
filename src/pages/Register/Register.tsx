@@ -26,7 +26,7 @@ export function Register() {
 
   const navigation = useNavigation<RegisterScreenProps>();
 
-  const { password } = useContext(PasswordContext);
+  const { password, removeMasterKey } = useContext(PasswordContext);
 
   async function handleSignUp(newData: FormPass): Promise<void> {
     try {
@@ -60,6 +60,12 @@ export function Register() {
   //   BackHandler.addEventListener('hardwareBackPress', () => true)
   //   return () => BackHandler.removeEventListener('hardwareBackPress', () => true)
   // }, []);
+
+  // useEffect(() => {
+  //   removeMasterKey();
+  // }, []);
+
+  // console.log(password, 'empty');
 
   return (
     <React.Fragment>

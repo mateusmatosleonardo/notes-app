@@ -24,8 +24,8 @@ export function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="SignUp"
-        // initialRouteName={password ? "SignIn" : "SignUp"}
+        // initialRouteName="SignUp"
+        initialRouteName={password === "" ? "SignUp" : "SignIn"}
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SignUp" component={Register} />
         <Stack.Screen name="SignIn" component={SignIn} />
