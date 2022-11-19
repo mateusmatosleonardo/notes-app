@@ -24,8 +24,8 @@ export const PasswordContextProvider = ({ children }: IPasswordContext) => {
         console.log('deu certo!');
       } else {
         flashMessage({
-          message: 'Erro!',
-          description: 'A senha não confere',
+          message: 'Senha incorreta',
+          description: 'Certifique-se de inserir a senha correta e tente novamente.',
           type: 'danger'
         });
       }
