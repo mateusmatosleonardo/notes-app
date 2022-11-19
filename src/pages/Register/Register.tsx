@@ -55,6 +55,7 @@ export function Register() {
     }
   }
 
+  // * function to implement in android
   // useEffect(() => {
   //   BackHandler.addEventListener('hardwareBackPress', () => true)
   //   return () => BackHandler.removeEventListener('hardwareBackPress', () => true)

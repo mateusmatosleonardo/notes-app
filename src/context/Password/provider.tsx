@@ -42,6 +42,9 @@ export const PasswordContextProvider = ({ children }: IPasswordContext) => {
     }
   }
 
+  // revome after debug 
+  console.log('Passo 3')
+
   return (
     <PasswordContext.Provider value={{
       password,

@@ -28,6 +28,9 @@ export default function App() {
     return <Loading />
   }
 
+  // revome after debug 
+  console.log('Passo 1')
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>

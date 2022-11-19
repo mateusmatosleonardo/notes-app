@@ -18,6 +18,9 @@ export function Routes() {
 
   // console.log('Vindo muitas vezes?', password);
 
+  // revome after debug 
+  console.log('Passo 2')
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -26,7 +29,8 @@ export function Routes() {
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SignUp" component={Register} />
         <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="Home" component={Home} options={{ gestureEnabled: false }} />
+        <Stack.Screen name="Home" component={Home}
+          options={{ gestureEnabled: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
