@@ -8,7 +8,7 @@ export const Wrapper = styled.View`
   justify-content: space-between;
   align-items: center;
   padding: 30px 20px;
-  background-color: #3175e6;
+  background-color: ${({ theme }) => theme.colors.BLUE};
 `;
 
 export const WrapperProfile = styled.View`
@@ -21,7 +21,7 @@ export const PhotoProfile = styled.View`
   align-items: center;
   padding: 12px;
   border-radius: 50px;
-  background-color: #fafafa;
+  background-color: ${({ theme }) => theme.colors.WHITE};
 `;
 
 export const WrapperText = styled.View`
@@ -29,21 +29,15 @@ export const WrapperText = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-family: "Nunito_400Regular";
+  font-family: ${({ theme }) => theme.fonts.Nunito_Bold};
+  color: ${({ theme }) => theme.colors.WHITE};
   font-size: ${RFValue(20)}px;
-  color: #fafafa;
 `;
 
-export const Name = styled.Text`
-  font-family: "Nunito_600SemiBold";
-  font-size: ${RFValue(20)}px;
-  color: #fafafa;
-`;
-
-export const Text = styled.Text`
-  font-family: "Nunito_400Regular";
+export const SubTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.Nunito_Regular};
+  color: ${({ theme }) => theme.colors.WHITE};
   font-size: ${RFValue(12)}px;
-  color: #fafafa;
 `;
 
 // trocar por outro botão

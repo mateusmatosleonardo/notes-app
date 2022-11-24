@@ -10,11 +10,11 @@ export function Header({ onPress }: HeaderProps) {
       <S.Wrapper>
         <S.WrapperProfile>
           <S.PhotoProfile>
-            <UserIcon name='user' color='#313030' size={28} />
+            <UserIcon name='user' color='#414040' size={28} />
           </S.PhotoProfile>
           <S.WrapperText>
-            <S.Title>Olá, {<S.Name>Mateus</S.Name>}</S.Title>
-            <S.Text>Sua segurança é nossa prioridade!</S.Text>
+            <S.Title>Seja bem-vindo</S.Title>
+            <S.SubTitle>Sua segurança é nossa prioridade!</S.SubTitle>
           </S.WrapperText>
         </S.WrapperProfile>
         <S.AddNewPassword onPress={onPress}>

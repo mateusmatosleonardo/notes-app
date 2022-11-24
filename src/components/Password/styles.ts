@@ -3,7 +3,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex-direction: row;
-  padding: 12px 0px;
+  padding: 12px 20px;
 `;
 
 export const WrapperPassword = styled.View``;
