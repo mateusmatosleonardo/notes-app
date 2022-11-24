@@ -28,15 +28,10 @@ export default function App() {
     return <Loading />
   }
 
-  // revome after debug 
-  console.log('Passo 1 - App')
-
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <PasswordContextProvider>
-          <Routes />
-        </PasswordContextProvider>
+        <Routes />
         <StatusBar style="auto" />
         <FlashMessage position="top" />
       </ThemeProvider>

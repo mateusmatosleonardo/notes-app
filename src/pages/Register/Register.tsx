@@ -95,7 +95,7 @@ export function Register() {
                       placeholder='Senha'
                       placeholderTextColor={errors.password ?
                         '#ff375b' :
-                        '#595959'}
+                        '#414040'}
                       style={[S.styles.input, {
                         borderColor: errors.password ? '#ff375b' : '#595959'
                       }]}
@@ -105,7 +105,7 @@ export function Register() {
                       style={S.styles.icon}>
                       <Eye
                         name={visible ? 'eye-off' : 'eye'}
-                        color='#616060'
+                        color='#313030'
                         size={24} />
                     </S.PressableIcon>
                   </S.InputArea>

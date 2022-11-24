@@ -1,57 +1,13 @@
-import { useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { FormPass } from "../../pages/Register/types";
 import { PasswordContext } from "./PasswordContext";
 import { IPasswordContext } from "./types";
-import { flashMessage } from "../../utils/FlashMessage";
 
 export const PasswordContextProvider = ({ children }: IPasswordContext) => {
 
-  const [password, setPassword] = useState({});
-
-  async function fetchPassword(): Promise<void> {
-    try {
-      const value = await AsyncStorage.getItem('@savepass');
-      value !== null ? setPassword(JSON.parse(value)) : null;
-    } catch (e) {
-      console.log(e, 'error reading value');
-    }
-  }
-
-  function handleSignIn(data: FormPass): void {
-    try {
-      if (JSON.stringify(data) === JSON.stringify(password)) {
-        console.log('deu certo!');
-      } else {
-        flashMessage({
-          message: 'Senha incorreta',
-          description: 'Certifique-se de inserir a senha correta e tente novamente.',
-          type: 'danger'
-        });
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function removeMasterKey(): Promise<void> {
-    try {
-      await AsyncStorage.removeItem('@savepass')
-    } catch (e) {
-      console.log(e, 'erro ao deletar chave');
-    }
-  }
-
-  // revome after debug 
-  console.log('Passo 2 - Provider')
+  const props = '';
 
   return (
     <PasswordContext.Provider value={{
-      password,
-      setPassword,
-      handleSignIn,
-      fetchPassword,
-      removeMasterKey
+      props
     }}>
       {children}
     </PasswordContext.Provider>

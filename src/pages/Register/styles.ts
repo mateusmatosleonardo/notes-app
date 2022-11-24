@@ -21,7 +21,7 @@ export const Title = styled.Text`
 export const DefaultText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_Regular};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.BLACKLIGHT};
+  color: ${({ theme }) => theme.colors.BLACK};
   text-align: center;
 `;
 
@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 8,
     borderWidth: 1,
     borderRadius: 4,
-    color: "#595959",
+    color: "#313030",
   },
   btn: {
     justifyContent: "center",
