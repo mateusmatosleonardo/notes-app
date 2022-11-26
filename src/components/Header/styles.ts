@@ -8,7 +8,7 @@ export const Wrapper = styled.View`
   justify-content: space-between;
   align-items: center;
   padding: 30px 20px;
-  background-color: ${({ theme }) => theme.colors.BLUE};
+  background-color: ${({ theme }) => theme.colors.BLUE_SECONDARY};
 `;
 
 export const WrapperProfile = styled.View`
@@ -20,7 +20,7 @@ export const PhotoProfile = styled.View`
   justify-content: center;
   align-items: center;
   padding: 12px;
-  border-radius: 50px;
+  border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.WHITE};
 `;
 
@@ -40,9 +40,4 @@ export const SubTitle = styled.Text`
   font-size: ${RFValue(12)}px;
 `;
 
-// trocar por outro botão
-export const AddNewPassword = styled.Pressable`
-  padding: 16px;
-  border: 1px solid #fafafa;
-  border-radius: 4px;
-`;
+export const AddNewPassword = styled.Pressable``;
