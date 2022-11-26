@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { FlatList, ListRenderItemInfo, ScrollView, Text } from 'react-native';
+import { FlatList, ListRenderItemInfo, Text, Image } from 'react-native';
 import { Header } from '../../components/Header/Header';
 import { Password } from '../../components/Password/Password';
 import { PasswordProps } from '../../components/Password/types';
 import { SeparatorItem } from '../../components/SeparatorItem/SeparatorItem';
 import { usePassword } from '../../hooks/usePassword';
+import IconListEmpty from '../../assets/images/IconListEmpty.png';
 import * as S from './styles';
 
 export function Home() {
@@ -24,6 +25,19 @@ export function Home() {
     // }
   ]);
 
+  function ListEmptyComponent() {
+    return (
+      <S.WrapperListEmpty>
+        <S.Logo
+          source={IconListEmpty}
+          resizeMode='contain' />
+        <S.TitleListEmpty>
+          Você ainda não possui senhas salvas...
+        </S.TitleListEmpty>
+      </S.WrapperListEmpty>
+    )
+  }
+
   function renderItem({ item }: ListRenderItemInfo<PasswordProps>) {
     return <Password {...item} />
   }
@@ -39,9 +53,7 @@ export function Home() {
         keyExtractor={(item) => String(item.serviceName)}
         renderItem={renderItem}
         ItemSeparatorComponent={SeparatorItem}
-        ListEmptyComponent={() => (
-          <Text>Você não possui senhas salvas!</Text>
-        )}
+        ListEmptyComponent={() => ListEmptyComponent()}
       />
     </S.Container>
   );
