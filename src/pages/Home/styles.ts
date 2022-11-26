@@ -10,9 +10,9 @@ export const WrapperText = styled.View`
 `;
 
 export const TextPassword = styled.Text`
-  font-family: "Nunito_700Bold";
+  font-family: ${({ theme }) => theme.fonts.Nunito_Bold};
   font-size: ${RFValue(20)}px;
-  color: #313030;
+  color: ${({ theme }) => theme.colors.BLACK}; ;
 `;
 
 export const WrapperListEmpty = styled.View`
@@ -30,6 +30,6 @@ export const TitleListEmpty = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_SemiBold};
   font-size: ${RFValue(18)}px;
   text-align: center;
-  color: #99bfe7;
+  color: ${({ theme }) => theme.colors.BLUE_LIGHT};
   padding: 0px 58px;
 `;
