@@ -14,3 +14,22 @@ export const TextPassword = styled.Text`
   font-size: ${RFValue(20)}px;
   color: #313030;
 `;
+
+export const WrapperListEmpty = styled.View`
+  justify-content: center;
+  align-items: center;
+  padding: 38px 0px;
+`;
+
+export const Logo = styled.Image`
+  width: 200px;
+  height: 200px;
+`;
+
+export const TitleListEmpty = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.Nunito_SemiBold};
+  font-size: ${RFValue(18)}px;
+  text-align: center;
+  color: #99bfe7;
+  padding: 0px 58px;
+`;
