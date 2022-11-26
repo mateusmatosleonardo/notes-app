@@ -3,6 +3,7 @@ import * as S from './styles';
 import { HeaderProps } from './types';
 import AddIcon from '@expo/vector-icons/MaterialIcons';
 import UserIcon from '@expo/vector-icons/Feather';
+import Add from '@expo/vector-icons/Ionicons';
 
 export function Header({ onPress }: HeaderProps) {
   return (
@@ -18,7 +19,8 @@ export function Header({ onPress }: HeaderProps) {
           </S.WrapperText>
         </S.WrapperProfile>
         <S.AddNewPassword onPress={onPress}>
-          <AddIcon name='add' color='#fafafa' size={20} />
+          <Add name='add-circle' color='#fafafa' size={34} />
+          {/* <AddIcon name='add' color='#fafafa' size={24} /> */}
         </S.AddNewPassword>
       </S.Wrapper>
     </S.Container>
