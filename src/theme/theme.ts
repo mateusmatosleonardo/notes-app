@@ -6,7 +6,7 @@ export const theme = {
     BLACKLIGHT: "#595959",
     GRAY: "#B1BCC4",
     BLUE: "#3175e6",
-    BLUE_SECONDARY: "#1977F3",
+    BLUE_LIGHT: "#99bfe7",
     RED: "#E44F4F",
     RED_ALERT: "#ff375b",
   },
