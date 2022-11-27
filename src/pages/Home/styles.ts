@@ -12,13 +12,13 @@ export const WrapperText = styled.View`
 export const TextPassword = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_Bold};
   font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.BLACK}; ;
+  color: ${({ theme }) => theme.colors.BLUE_SECONDARY};
 `;
 
 export const WrapperListEmpty = styled.View`
   justify-content: center;
   align-items: center;
-  padding: 38px 0px;
+  padding: 68px 0px;
 `;
 
 export const Logo = styled.Image`
