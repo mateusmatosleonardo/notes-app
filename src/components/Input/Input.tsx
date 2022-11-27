@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextInput } from 'react-native';
 import { InputProps } from './types';
 
-export function Input({ ...rest }: InputProps) {
+export function Input({ value, onChangeText, ...rest }: InputProps) {
+
   return (
-    <TextInput {...rest} />
+    <TextInput
+      value={value}
+      onChangeText={onChangeText}
+      {...rest}
+    />
   );
 }
