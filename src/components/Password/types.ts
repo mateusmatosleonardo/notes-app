@@ -1,5 +1,6 @@
 export interface PasswordProps {
-  serviceName?: string;
-  userName?: string;
+  id?: string | number[];
+  servicename?: string;
+  username?: string;
   password?: string;
 }
