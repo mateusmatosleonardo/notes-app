@@ -3,7 +3,7 @@ import Eye from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
 import { PasswordProps } from './types';
 
-export function Password({ serviceName, userName, password }: PasswordProps) {
+export function Password({ servicename, username, password }: PasswordProps) {
 
   const [visible, setVisible] = useState(false);
 
@@ -16,8 +16,8 @@ export function Password({ serviceName, userName, password }: PasswordProps) {
           style={{ marginRight: 16 }} />
       </S.Pressable>
       <S.WrapperPassword>
-        <S.ServiceName>{serviceName}</S.ServiceName>
-        <S.UserName>{userName}</S.UserName>
+        <S.ServiceName>{servicename}</S.ServiceName>
+        <S.UserName>{username}</S.UserName>
         {
           visible
             ?
