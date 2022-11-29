@@ -62,6 +62,12 @@ export const KeyboardDismiss = styled.Pressable`
   height: 100%;
 `;
 
+export const TextError = styled.Text`
+  font-size: ${RFValue(13.5)}px;
+  font-family: ${({ theme }) => theme.fonts.Nunito_Regular};
+  color: ${({ theme }) => theme.colors.RED_ALERT};
+`;
+
 export const styles = StyleSheet.create({
   input: {
     flex: 1,
