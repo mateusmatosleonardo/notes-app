@@ -1,15 +1,20 @@
 import React from 'react';
 import { Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Input } from '../../components/Input/Input';
 import { useForm as useFormHook } from '../../hooks/useForm';
 import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './schema';
+import uuid from 'react-native-uuid';
+import { Input } from '../../components/Input/Input';
+import { Button } from '../../components/Button/Button';
+import { PasswordProps } from '../../components/Password/types';
 import * as S from './styles';
 import BackIcon from '@expo/vector-icons/Ionicons';
 import Envelope from '@expo/vector-icons/FontAwesome';
 import User from '@expo/vector-icons/Feather';
 import Padlock from '@expo/vector-icons/Feather';
-import { Button } from '../../components/Button/Button';
+import { flashMessage } from '../../utils/FlashMessage';
 
 export function Form() {
 
@@ -21,13 +26,17 @@ export function Form() {
     handleInputFocusUser,
     handleInputBlurUser,
     handleInputFocusPassword,
-    handleInputBlurPassword } = useFormHook();
+    handleInputBlurPassword,
+  } = useFormHook();
 
   const navigation = useNavigation();
 
-  const { control, handleSubmit, formState: { errors } } = useForm({});
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
 
-  function handleNewPassword(data: any) {
+  function handleNewPassword(data: PasswordProps) {
+    data.id = uuid.v4();
     console.log(data);
   }
 
@@ -75,6 +84,10 @@ export function Form() {
               </S.InputArea>
             )}
           />
+          {errors.servicename &&
+            <S.TextError>
+              {errors.servicename?.message}
+            </S.TextError>}
           <Controller
             name='username'
             control={control}
@@ -105,9 +118,12 @@ export function Form() {
                   style={S.styles.input}
                 />
               </S.InputArea>
-
             )}
           />
+          {errors.username &&
+            <S.TextError>
+              {errors.username?.message}
+            </S.TextError>}
           <Controller
             name='password'
             control={control}
@@ -141,6 +157,10 @@ export function Form() {
 
             )}
           />
+          {errors.password &&
+            <S.TextError>
+              {errors.password?.message}
+            </S.TextError>}
           <Button
             title='Cadastrar'
             style={S.styles.button}
