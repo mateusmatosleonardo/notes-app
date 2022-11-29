@@ -1,20 +1,20 @@
 import React from 'react';
+import * as S from './styles';
+import uuid from 'react-native-uuid';
 import { Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useForm as useFormHook } from '../../hooks/useForm';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema';
-import uuid from 'react-native-uuid';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import { PasswordProps } from '../../components/Password/types';
-import * as S from './styles';
+import { flashMessage } from '../../utils/FlashMessage';
 import BackIcon from '@expo/vector-icons/Ionicons';
 import Envelope from '@expo/vector-icons/FontAwesome';
 import User from '@expo/vector-icons/Feather';
 import Padlock from '@expo/vector-icons/Feather';
-import { flashMessage } from '../../utils/FlashMessage';
 
 export function Form() {
 
@@ -37,7 +37,16 @@ export function Form() {
 
   function handleNewPassword(data: PasswordProps) {
     data.id = uuid.v4();
-    console.log(data);
+    try {
+      console.log(data);
+      flashMessage({
+        message: 'Sucesso!',
+        description: 'Cadastrado com sucesso',
+        type: 'success'
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
