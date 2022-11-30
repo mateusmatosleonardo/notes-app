@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 import { Header } from '../../components/Header/Header';
 import { Password } from '../../components/Password/Password';
@@ -7,8 +7,9 @@ import { SeparatorItem } from '../../components/SeparatorItem/SeparatorItem';
 import { usePassword } from '../../hooks/usePassword';
 import IconListEmpty from '../../assets/images/IconListEmpty.png';
 import * as S from './styles';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { HomeScreenProps } from './types';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function Home() {
 
@@ -16,18 +17,17 @@ export function Home() {
 
   const navigation = useNavigation<HomeScreenProps>();
 
-  const [data, setData] = useState<PasswordProps[]>([
-    // {
-    //   serviceName: 'E-mail',
-    //   userName: 'mateusleo@gmail.com',
-    //   password: '12345678'
-    // },
-    // {
-    //   serviceName: 'Netflix',
-    //   userName: 'mateusleo@gmail.com',
-    //   password: '12345678dsadas'
-    // },
-  ]);
+  const [data, setData] = useState<PasswordProps[]>([]);
+
+  async function handleFetchData() {
+    try {
+      const response = await AsyncStorage.getItem('@savepass:passwords');
+      const data = response ? JSON.parse(response) : [];
+      setData(data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   function ListEmptyComponent() {
     return (
@@ -46,6 +46,10 @@ export function Home() {
     return <Password {...item} />
   }
 
+  useFocusEffect(useCallback(() => {
+    handleFetchData();
+  }, []));
+
   return (
     <S.Container>
       <Header onPress={() => navigation.navigate('Form')} />
@@ -55,13 +59,13 @@ export function Home() {
           </>
           :
           <S.WrapperText>
-            <S.TextPassword>Senhas</S.TextPassword>
+            <S.TextPassword>Todas as entradas</S.TextPassword>
           </S.WrapperText>
       }
 
       <FlatList
         data={data}
-        keyExtractor={(item) => String(item.serviceName)}
+        keyExtractor={(item) => String(item.id)}
         renderItem={renderItem}
         ItemSeparatorComponent={SeparatorItem}
         ListEmptyComponent={() => ListEmptyComponent()}
