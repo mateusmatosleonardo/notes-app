@@ -16,8 +16,6 @@ export const Header = styled.View`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
   background-color: ${({ theme }) => theme.colors.BLUE_SECONDARY};
 `;
 
@@ -34,7 +32,7 @@ export const Invisible = styled.View`
   height: 24px;
 `;
 
-export const Form = styled.View`
+export const Form = styled.KeyboardAvoidingView`
   width: 100%;
   padding: 20px 25px;
 `;
@@ -44,7 +42,7 @@ export const InputArea = styled.View`
   align-items: center;
   width: 100%;
   height: 48px;
-  margin-top: 18px;
+  margin-top: 20px;
   padding-top: 2px;
   background-color: ${({ theme }) => theme.colors.GRAY};
   border-radius: 2px;
@@ -59,7 +57,8 @@ export const Diviser = styled.View`
 `;
 
 export const KeyboardDismiss = styled.Pressable`
-  height: 100%;
+  flex: 1;
+  /* padding-top: 40px; */
 `;
 
 export const TextError = styled.Text`
@@ -83,7 +82,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     height: 45,
     backgroundColor: "#679ad8",
-    marginTop: 18,
+    marginVertical: 20,
     borderRadius: 2,
   },
 });
