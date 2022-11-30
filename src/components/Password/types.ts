@@ -3,4 +3,5 @@ export interface PasswordProps {
   servicename?: string;
   username?: string;
   password?: string;
+  annotation?: string;
 }
