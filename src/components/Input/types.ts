@@ -5,6 +5,7 @@ import {
   ReturnKeyTypeOptions,
   StyleProp,
   TextInput,
+  TextInputContentSizeChangeEventData,
   TextInputFocusEventData,
   TextInputSubmitEditingEventData,
   TextStyle,
@@ -31,4 +32,8 @@ export interface InputProps {
     | undefined;
   returnKeyType?: ReturnKeyTypeOptions | undefined;
   autoCapitalize?: "none" | "sentences" | "characters" | "words";
+  multiline?: boolean | undefined;
+  onContentSizeChange?:
+    | ((e: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => void)
+    | undefined;
 }
