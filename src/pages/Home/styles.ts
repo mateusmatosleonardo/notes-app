@@ -7,7 +7,7 @@ export const Container = styled.View`
 `;
 
 export const WrapperText = styled.View`
-  padding: 16px 20px;
+  padding: 16px 0px 16px 16px;
 `;
 
 export const TextPassword = styled.Text`
