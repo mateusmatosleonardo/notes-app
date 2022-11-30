@@ -3,6 +3,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
+  background-color: ${({ theme }) => theme.colors.WHITE};
 `;
 
 export const WrapperText = styled.View`
@@ -22,8 +23,8 @@ export const WrapperListEmpty = styled.View`
 `;
 
 export const Logo = styled.Image`
-  width: 200px;
-  height: 200px;
+  width: 240px;
+  height: 240px;
 `;
 
 export const TitleListEmpty = styled.Text`
