@@ -16,6 +16,7 @@ import Envelope from '@expo/vector-icons/FontAwesome';
 import User from '@expo/vector-icons/Feather';
 import Padlock from '@expo/vector-icons/Feather';
 import { FormScreenProps } from './types';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function Form() {
 
@@ -36,17 +37,28 @@ export function Form() {
     resolver: yupResolver(schema)
   });
 
-  function handleNewPassword(data: PasswordProps) {
+  async function handleNewPassword(data: PasswordProps) {
     data.id = uuid.v4();
     try {
-      console.log(data);
+
+      const response = await AsyncStorage.getItem('@savepass:passwords');
+      const previousData = response ? JSON.parse(response) : [];
+
+      const newData = [...previousData, data];
+
+      await AsyncStorage.setItem('@savepass:passwords', JSON.stringify(newData));
+
       flashMessage({
-        message: 'Sucesso!',
-        description: 'Cadastrado com sucesso',
+        message: 'Sucesso',
+        description: 'Cadastrado com sucesso!',
         type: 'success'
       });
-      navigation.navigate('Home');
     } catch (e) {
+      flashMessage({
+        message: 'Error',
+        description: 'Não foi possível cadastrar.',
+        type: 'success'
+      });
       console.log(e);
     }
   }
@@ -173,17 +185,23 @@ export function Form() {
             <S.TextError>
               {errors.password?.message}
             </S.TextError>}
-          <S.InputArea
-            style={{ height: 92, alignItems: 'flex-start' }}
-          >
-            <Input
-              placeholder='Deseja fazer uma anotação?'
-              placeholderTextColor='#AAAAAA'
-              autoCapitalize='none'
-              style={[S.styles.input, { paddingTop: 8 }]}
-              multiline={true}
-            />
-          </S.InputArea>
+          <Controller
+            name='annotation'
+            control={control}
+            render={({ field: { value, onChange } }) => (
+              <S.InputArea style={{ height: 92, alignItems: 'flex-start' }}>
+                <Input
+                  value={value}
+                  onChangeText={onChange}
+                  placeholder='Deseja fazer uma anotação?'
+                  placeholderTextColor='#AAAAAA'
+                  autoCapitalize='none'
+                  style={[S.styles.input, { paddingTop: 8 }]}
+                  multiline={true}
+                />
+              </S.InputArea>
+            )}
+          />
           <Button
             title='Cadastrar'
             style={S.styles.button}
@@ -191,6 +209,6 @@ export function Form() {
           />
         </S.Form>
       </S.KeyboardDismiss>
-    </S.Container>
+    </S.Container >
   );
 }
