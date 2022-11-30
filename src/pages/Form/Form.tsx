@@ -15,6 +15,7 @@ import BackIcon from '@expo/vector-icons/Ionicons';
 import Envelope from '@expo/vector-icons/FontAwesome';
 import User from '@expo/vector-icons/Feather';
 import Padlock from '@expo/vector-icons/Feather';
+import { FormScreenProps } from './types';
 
 export function Form() {
 
@@ -29,7 +30,7 @@ export function Form() {
     handleInputBlurPassword,
   } = useFormHook();
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<FormScreenProps>();
 
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
@@ -44,6 +45,7 @@ export function Form() {
         description: 'Cadastrado com sucesso',
         type: 'success'
       });
+      navigation.navigate('Home');
     } catch (e) {
       console.log(e);
     }
@@ -51,8 +53,10 @@ export function Form() {
 
   return (
     <S.Container>
+      {/* change name Wrapper */}
       <S.Wrapper>
         <S.Header>
+          {/* change name Touch */}
           <S.Touch onPress={() => navigation.goBack()}>
             <BackIcon name='chevron-back' color='#fafafa' size={26} />
           </S.Touch>
@@ -75,7 +79,7 @@ export function Form() {
                 <S.Diviser>
                   <Envelope
                     name='envelope-o'
-                    color={isFocusedService ? '#99bfe7' : '#AAAAAA'}
+                    color={(isFocusedService || !!value) ? '#99bfe7' : '#AAAAAA'}
                     size={22}
                     style={{ paddingHorizontal: 12 }}
                   />
@@ -110,7 +114,7 @@ export function Form() {
                 <S.Diviser>
                   <User
                     name='user'
-                    color={isFocusedUser ? '#99bfe7' : '#AAAAAA'}
+                    color={(isFocusedUser || !!value) ? '#99bfe7' : '#AAAAAA'}
                     size={22}
                     style={{ paddingHorizontal: 12 }}
                   />
@@ -146,7 +150,7 @@ export function Form() {
                 <S.Diviser>
                   <Padlock
                     name='lock'
-                    color={isFocusedPassword ? '#99bfe7' : '#AAAAAA'}
+                    color={(isFocusedPassword || !!value) ? '#99bfe7' : '#AAAAAA'}
                     size={22}
                     style={{ paddingHorizontal: 12 }}
                   />
@@ -163,13 +167,23 @@ export function Form() {
                   style={S.styles.input}
                 />
               </S.InputArea>
-
             )}
           />
           {errors.password &&
             <S.TextError>
               {errors.password?.message}
             </S.TextError>}
+          <S.InputArea
+            style={{ height: 92, alignItems: 'flex-start' }}
+          >
+            <Input
+              placeholder='Deseja fazer uma anotação?'
+              placeholderTextColor='#AAAAAA'
+              autoCapitalize='none'
+              style={[S.styles.input, { paddingTop: 8 }]}
+              multiline={true}
+            />
+          </S.InputArea>
           <Button
             title='Cadastrar'
             style={S.styles.button}
