@@ -57,16 +57,15 @@ export function Form() {
       flashMessage({
         message: 'Error',
         description: 'Não foi possível cadastrar.',
-        type: 'success'
+        type: 'danger'
       });
       console.log(e);
     }
   }
 
   return (
-    <S.Container>
-      {/* change name Wrapper */}
-      <S.Wrapper>
+    <S.Container behavior="padding">
+      <S.SafeAreaView>
         <S.Header>
           {/* change name Touch */}
           <S.Touch onPress={() => navigation.goBack()}>
@@ -75,7 +74,7 @@ export function Form() {
           <S.Title>Cadastro</S.Title>
           <S.Invisible />
         </S.Header>
-      </S.Wrapper>
+      </S.SafeAreaView>
       <S.KeyboardDismiss onPress={Keyboard.dismiss}>
         <S.Form>
           <Controller
