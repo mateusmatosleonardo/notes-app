@@ -2,12 +2,12 @@ import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { StyleSheet } from "react-native";
 
-export const Container = styled.View`
+export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.WHITE};
 `;
 
-export const Wrapper = styled.SafeAreaView`
+export const SafeAreaView = styled.SafeAreaView`
   padding-top: 20px;
 `;
 
@@ -32,7 +32,7 @@ export const Invisible = styled.View`
   height: 24px;
 `;
 
-export const Form = styled.KeyboardAvoidingView`
+export const Form = styled.ScrollView`
   width: 100%;
   padding: 20px 25px;
 `;
@@ -82,7 +82,8 @@ export const styles = StyleSheet.create({
     width: "100%",
     height: 45,
     backgroundColor: "#679ad8",
-    marginVertical: 20,
+    marginTop: 20,
+    marginBottom: 40,
     borderRadius: 2,
   },
 });
