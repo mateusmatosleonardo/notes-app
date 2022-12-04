@@ -4,7 +4,6 @@ import { Header } from '../../components/Header/Header';
 import { Password } from '../../components/Password/Password';
 import { PasswordProps } from '../../components/Password/types';
 import { SeparatorItem } from '../../components/SeparatorItem/SeparatorItem';
-import { usePassword } from '../../hooks/usePassword';
 import IconListEmpty from '../../assets/images/IconListEmpty.png';
 import * as S from './styles';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
@@ -12,8 +11,6 @@ import { HomeScreenProps } from './types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function Home() {
-
-  const { handleNewPassword } = usePassword();
 
   const navigation = useNavigation<HomeScreenProps>();
 
