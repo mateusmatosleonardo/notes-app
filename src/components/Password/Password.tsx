@@ -1,11 +1,14 @@
 import * as S from './styles';
+import { useState } from 'react';
+import { PasswordProps } from './types';
 import Eye from '@expo/vector-icons/Ionicons';
 import Options from '@expo/vector-icons/SimpleLineIcons';
 import Arrow from '@expo/vector-icons/MaterialIcons';
-import { useState } from 'react';
-import { PasswordProps } from './types';
 
-export function Password({ servicename, username, password, annotation }: PasswordProps) {
+export function Password({ servicename,
+  username,
+  password,
+  annotation }: PasswordProps) {
 
   const [visible, setVisible] = useState(false);
   const [expand, setExpand] = useState(false);

@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 import { Header } from '../../components/Header/Header';
 import { Password } from '../../components/Password/Password';
 import { PasswordProps } from '../../components/Password/types';
 import { SeparatorItem } from '../../components/SeparatorItem/SeparatorItem';
-import IconListEmpty from '../../assets/images/IconListEmpty.png';
-import * as S from './styles';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { HomeScreenProps } from './types';
+import IconListEmpty from '../../assets/images/IconListEmpty.png';
+import * as S from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function Home() {
@@ -59,7 +59,6 @@ export function Home() {
             <S.TextPassword>Todas as entradas</S.TextPassword>
           </S.WrapperText>
       }
-
       <FlatList
         data={data}
         keyExtractor={(item) => String(item.id)}
