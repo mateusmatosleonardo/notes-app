@@ -11,7 +11,7 @@ export const Container = styled.Pressable`
 export const ContainerInformations = styled.View`
   width: 100%;
   padding: 16px 0px;
-  background-color: ${({ theme }) => theme.colors.BLUE_LIGHT};
+  background-color: ${({ theme }) => theme.colors.OTHER_GRAY};
 `;
 
 export const WrapperInformations = styled.View`
