@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import uuid from 'react-native-uuid';
-import { Keyboard } from 'react-native';
+import { Keyboard, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useForm as useFormHook } from '../../hooks/useForm';
 import { Controller, useForm } from 'react-hook-form';
@@ -11,12 +11,12 @@ import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import { PasswordProps } from '../../components/Password/types';
 import { flashMessage } from '../../utils/FlashMessage';
+import { FormScreenProps } from './types';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import BackIcon from '@expo/vector-icons/Ionicons';
 import Envelope from '@expo/vector-icons/FontAwesome';
 import User from '@expo/vector-icons/Feather';
 import Padlock from '@expo/vector-icons/Feather';
-import { FormScreenProps } from './types';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function Form() {
 
@@ -64,7 +64,7 @@ export function Form() {
   }
 
   return (
-    <S.Container behavior="padding">
+    <S.Container behavior={Platform.OS === 'ios' ? "padding" : "height"}>
       <S.SafeAreaView>
         <S.Header>
           {/* change name Touch */}
