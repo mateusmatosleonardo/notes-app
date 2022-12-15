@@ -10,9 +10,9 @@ export const WrapperText = styled.View`
   padding: 16px 0px 16px 16px;
 `;
 
-export const TextPassword = styled.Text`
+export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_Bold};
-  font-size: ${RFValue(20)}px;
+  font-size: ${({ theme }) => RFValue(theme.sizes.LARGE)}px;
   color: ${({ theme }) => theme.colors.BLUE_SECONDARY};
 `;
 
