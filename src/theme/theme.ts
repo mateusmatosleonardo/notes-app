@@ -18,4 +18,11 @@ export const theme = {
     Nunito_SemiBold: "Nunito_600SemiBold",
     Nunito_Bold: "Nunito_700Bold",
   },
+  sizes: {
+    SMALL: 12,
+    NORMAL: 14,
+    MEDIUM_LARGE: 16,
+    LARGE: 20,
+    ULTRA_LARGE: 22,
+  },
 };
