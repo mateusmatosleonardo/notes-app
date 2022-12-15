@@ -10,13 +10,16 @@ export const Container = styled.Pressable`
 
 export const ContainerInformations = styled.View`
   width: 100%;
-  padding: 16px 0px;
-  background-color: ${({ theme }) => theme.colors.OTHER_GRAY};
+  padding: 0px 18px 16px 18px;
+  /* background-color: ${({ theme }) => theme.colors.OTHER_GRAY}; */
 `;
 
 export const WrapperInformations = styled.View`
   width: 100%;
   padding: 0px 18px;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: transparent;
   background-color: ${({ theme }) => theme.colors.WHITE};
 `;
 
@@ -35,7 +38,7 @@ export const UserName = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_Medium};
   font-size: ${RFValue(16)}px;
   padding: 12px 0px;
-  color: ${({ theme }) => theme.colors.BLACK};
+  color: ${({ theme }) => theme.colors.BLACKLIGHT};
 `;
 
 export const WrapperPassword = styled.View`
@@ -49,7 +52,7 @@ export const WrapperPassword = styled.View`
 export const Password = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_Medium};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.BLACK};
+  color: ${({ theme }) => theme.colors.BLACKLIGHT};
 `;
 
 // ! existe um bug aqui
@@ -59,14 +62,14 @@ export const Password = styled.Text`
 export const PasswordInvisible = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_Medium};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.BLACK};
+  color: ${({ theme }) => theme.colors.BLACKLIGHT};
   margin-top: 6px;
 `;
 
 export const Annotation = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_Medium};
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.BLACK};
+  color: ${({ theme }) => theme.colors.BLACKLIGHT};
   padding: 12px 0px;
 `;
 

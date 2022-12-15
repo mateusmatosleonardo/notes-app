@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { FlatList, ListRenderItemInfo } from 'react-native';
+import { Alert, FlatList, ListRenderItemInfo } from 'react-native';
 import { Header } from '../../components/Header/Header';
 import { Password } from '../../components/Password/Password';
 import { PasswordProps } from '../../components/Password/types';
@@ -28,14 +28,15 @@ export function Home() {
     }
   }
 
-  async function handleRemove(id: string | number[] | undefined) {
-    const response = await getItem();
-    const previousData = response ? JSON.parse(response) : [];
+  async function handleRemove(servicename: string | undefined) {
+    // const response = await getItem();
+    // const previousData = response ? JSON.parse(response) : [];
 
-    const data = previousData.filter((item: PasswordProps) => item.id !== id);
+    // const data = previousData.filter((item: PasswordProps) => item.id !== id);
 
-    setItem(JSON.stringify(data));
-    setData(data);
+    // setItem(JSON.stringify(data));
+    // setData(data);
+    Alert.alert(`Tem certeza que dejesa excluir ${servicename}`);
   }
 
   function ListEmptyComponent() {
@@ -53,7 +54,7 @@ export function Home() {
 
   function renderItem({ item }: ListRenderItemInfo<PasswordProps>) {
     return <Password {...item}
-      onPress={() => handleRemove(item.id)}
+      onPress={() => handleRemove(item.servicename)}
     />
   }
 

@@ -12,7 +12,7 @@ import { Button } from '../../components/Button/Button';
 import { PasswordProps } from '../../components/Password/types';
 import { flashMessage } from '../../utils/FlashMessage';
 import { FormScreenProps } from './types';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import BackIcon from '@expo/vector-icons/Ionicons';
 import Envelope from '@expo/vector-icons/FontAwesome';
 import User from '@expo/vector-icons/Feather';
@@ -31,6 +31,8 @@ export function Form() {
     handleInputBlurPassword,
   } = useFormHook();
 
+  const { getItem, setItem } = useAsyncStorage('@savepass:passwords');
+
   const navigation = useNavigation<FormScreenProps>();
 
   const { control, handleSubmit, formState: { errors } } = useForm({
@@ -41,12 +43,12 @@ export function Form() {
     data.id = uuid.v4();
     try {
 
-      const response = await AsyncStorage.getItem('@savepass:passwords');
+      const response = await getItem();
       const previousData = response ? JSON.parse(response) : [];
 
       const newData = [...previousData, data];
 
-      await AsyncStorage.setItem('@savepass:passwords', JSON.stringify(newData));
+      await setItem(JSON.stringify(newData));
 
       flashMessage({
         message: 'Sucesso',
