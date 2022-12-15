@@ -6,15 +6,14 @@ import { PasswordProps } from '../../components/Password/types';
 import { SeparatorItem } from '../../components/SeparatorItem/SeparatorItem';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { HomeScreenProps } from './types';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import IconListEmpty from '../../assets/images/IconListEmpty.png';
 import * as S from './styles';
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';;
 
 export function Home() {
 
   const navigation = useNavigation<HomeScreenProps>();
 
-  const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState<PasswordProps[]>([]);
 
   const { getItem, setItem } = useAsyncStorage('@savepass:passwords');
@@ -72,7 +71,7 @@ export function Home() {
             </>
             :
             <S.WrapperText>
-              <S.TextPassword>Todas as entradas</S.TextPassword>
+              <S.Title>Suas senhas</S.Title>
             </S.WrapperText>
         }
         <FlatList
