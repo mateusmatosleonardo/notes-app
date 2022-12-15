@@ -33,13 +33,13 @@ export const WrapperText = styled.View`
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_Bold};
   color: ${({ theme }) => theme.colors.WHITE};
-  font-size: ${RFValue(20)}px;
+  font-size: ${({ theme }) => RFValue(theme.sizes.LARGE)}px;
 `;
 
 export const SubTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Nunito_Regular};
   color: ${({ theme }) => theme.colors.WHITE};
-  font-size: ${RFValue(12)}px;
+  font-size: ${({ theme }) => RFValue(theme.sizes.SMALL)}px;
 `;
 
 export const AddNewPassword = styled.Pressable``;
