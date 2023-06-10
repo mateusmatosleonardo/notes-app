@@ -5,11 +5,11 @@ import { StatusBar } from 'expo-status-bar';
 import { Routes } from './src/routes/Routes';
 import {
   useFonts,
-  Nunito_400Regular,
-  Nunito_500Medium,
-  Nunito_600SemiBold,
-  Nunito_700Bold
-} from '@expo-google-fonts/nunito';
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold
+} from '@expo-google-fonts/inter';
 import { PasswordContextProvider } from './src/context/Password/provider';
 import { Loading } from './src/components/Loading/Loading';
 import FlashMessage from 'react-native-flash-message';
@@ -18,10 +18,10 @@ import { theme } from './src/theme/theme';
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    Nunito_400Regular,
-    Nunito_500Medium,
-    Nunito_600SemiBold,
-    Nunito_700Bold
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold
   });
 
   if (!fontsLoaded) {
@@ -32,7 +32,7 @@ export default function App() {
     <React.Fragment>
       <ThemeProvider theme={theme}>
         <Routes />
-        <StatusBar style="auto" />
+        <StatusBar style="auto" backgroundColor='#679ad8' />
         <FlashMessage position="top" />
       </ThemeProvider>
     </React.Fragment>
