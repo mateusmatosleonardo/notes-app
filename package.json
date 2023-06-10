@@ -10,8 +10,9 @@
     "test": "jest --verbose"
   },
   "dependencies": {
-    "@expo-google-fonts/nunito": "^0.2.2",
+    "@expo-google-fonts/inter": "^0.2.3",
     "@expo/vector-icons": "^13.0.0",
+    "@expo/webpack-config": "^0.17.0",
     "@hookform/resolvers": "^2.9.10",
     "@react-native-async-storage/async-storage": "^1.17.10",
     "@react-native-community/masked-view": "^0.1.11",
@@ -24,7 +25,7 @@
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-hook-form": "^7.38.0",
-    "react-native": "0.69.6",
+    "react-native": "0.69.9",
     "react-native-flash-message": "^0.3.1",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-reanimated": "~2.9.1",
