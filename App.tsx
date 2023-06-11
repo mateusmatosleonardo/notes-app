@@ -32,7 +32,7 @@ export default function App() {
     <React.Fragment>
       <ThemeProvider theme={theme}>
         <Routes />
-        <StatusBar style="auto" backgroundColor='#679ad8' />
+        <StatusBar style="auto" backgroundColor='#fafafa' />
         <FlashMessage position="top" />
       </ThemeProvider>
     </React.Fragment>
