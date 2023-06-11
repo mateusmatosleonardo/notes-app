@@ -1,11 +1,11 @@
 import React from "react";
-import * as S from './styles';
+import { Button as Pressable, Title } from "./styles";
 import { ButtonProps } from "./types";
 
 export function Button({ title, style, onPress }: ButtonProps) {
   return (
-    <S.Button style={style} onPress={onPress}>
-      <S.Title>{title}</S.Title>
-    </S.Button>
+    <Pressable style={style} onPress={onPress}>
+      <Title>{title}</Title>
+    </Pressable>
   )
 }
