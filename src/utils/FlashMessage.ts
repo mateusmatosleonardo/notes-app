@@ -18,11 +18,11 @@ export function flashMessage({
     message: message,
     description: description,
     type: type,
-    titleStyle: { fontFamily: "Nunito_700Bold" },
-    textStyle: { fontFamily: "Nunito_400Regular" },
+    titleStyle: { fontFamily: "Inter_700Bold" },
+    textStyle: { fontFamily: "Inter_400Regular" },
     style: [
       style,
-      { marginTop: 32, marginHorizontal: 22, borderRadius: 6, paddingTop: 0 },
+      { marginTop: 42, marginHorizontal: 22, borderRadius: 6, paddingTop: 10 },
     ],
   });
 }
