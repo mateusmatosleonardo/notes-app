@@ -17,6 +17,7 @@ export const theme = {
       PURPLE: "#d2c6e4",
       YELLOW: "#f5e6b3",
       BLUE: "#b6d3e0",
+      BROWN: "#d1c8c4",
     },
   },
   fonts: {
