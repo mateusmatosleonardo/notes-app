@@ -10,7 +10,7 @@ export function Header() {
           <Title>Notas</Title>
           <SubTitle>Olá, Mateus! 👋</SubTitle>
         </WrapperTitles>
-        <WrapperAvatar>
+        <WrapperAvatar >
           <Avatar source={Me} />
         </WrapperAvatar>
       </Wrapper>

@@ -7,7 +7,7 @@ export const Wrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 20px;
+  padding: 16px 20px;
   background-color: ${({ theme }) => theme.colors.primary.WHITE};
 `;
 
@@ -22,18 +22,16 @@ export const Avatar = styled.Image`
   border-radius: 31px;
 `;
 
-export const WrapperTitles = styled.View`
-  margin-left: 12px;
-`;
+export const WrapperTitles = styled.View``;
 
 export const Title = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.Inter_SemiBold};
+  font-family: ${({ theme }) => theme.fonts.Inter_Medium};
   color: ${({ theme }) => theme.colors.primary.BLACK};
   font-size: ${({ theme }) => RFValue(theme.sizes.ULTRA_LARGE)}px;
 `;
 
 export const SubTitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.Inter_Medium};
+  font-family: ${({ theme }) => theme.fonts.Inter_Regular};
   color: ${({ theme }) => theme.colors.primary.MIDDLE_GREY};
   font-size: ${({ theme }) => RFValue(theme.sizes.NORMAL)}px;
 `;
