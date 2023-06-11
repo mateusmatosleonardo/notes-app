@@ -3,7 +3,7 @@ export interface CardProps {
   title: string;
   content: string;
   category: string;
-  onPress: () => void;
+  navigation: () => void;
 }
 
 export type CategoryColorsProps = {

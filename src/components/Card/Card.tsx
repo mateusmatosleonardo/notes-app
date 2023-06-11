@@ -4,7 +4,6 @@ import {
   CategoryCard,
   Content,
   InvisibleView,
-  Pressable,
   TitleCard,
   WrapperCard,
   WrapperCategory,
@@ -12,9 +11,8 @@ import {
 } from './styles';
 import { CardProps, CategoryColorsProps } from './types';
 import { useTheme } from 'styled-components';
-import Icon from '@expo/vector-icons/Entypo';
 
-export function Card({ title, content, category, onPress }: CardProps) {
+export function Card({ title, content, category, navigation }: CardProps) {
 
   const { colors } = useTheme();
 
@@ -32,12 +30,9 @@ export function Card({ title, content, category, onPress }: CardProps) {
   const formattedTitle = category.charAt(0).toUpperCase() + category.slice(1);
 
   return (
-    <WrapperCard style={{ elevation: 1. }}>
+    <WrapperCard onPress={navigation} style={{ elevation: 1 }}>
       <WrapperTitleCard>
         <TitleCard>{title}</TitleCard>
-        <Pressable onPress={onPress}>
-          <Icon name="dots-three-horizontal" size={22} color={colors.primary.DARK_GREY} />
-        </Pressable>
       </WrapperTitleCard>
       <Content numberOfLines={3}>{content}</Content>
       <WrapperCategory>

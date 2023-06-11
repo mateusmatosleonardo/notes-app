@@ -8,7 +8,7 @@ interface CategoryCardProps {
 
 const WIDTH = Dimensions.get("screen").width;
 
-export const WrapperCard = styled.View`
+export const WrapperCard = styled.Pressable`
   width: ${WIDTH * 0.88}px;
   padding: 12px 16px;
   margin-bottom: 8px;
@@ -18,9 +18,6 @@ export const WrapperCard = styled.View`
 
 export const WrapperTitleCard = styled.View`
   width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
 `;
 
 export const TitleCard = styled.Text`
@@ -28,8 +25,6 @@ export const TitleCard = styled.Text`
   font-size: ${RFValue(18)}px;
   color: ${({ theme }) => theme.colors.primary.BLACK};
 `;
-
-export const Pressable = styled.Pressable``;
 
 export const Content = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Inter_Regular};
