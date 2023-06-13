@@ -1,36 +1,37 @@
 import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
+import { StatusBar } from "react-native";
+
+const statusBarHeight = StatusBar.currentHeight
+  ? StatusBar.currentHeight + 0
+  : 0;
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.WHITE};
+  padding-top: ${statusBarHeight}px;
+  background-color: ${({ theme }) => theme.colors.primary.WHITE};
 `;
 
-export const WrapperText = styled.View`
-  padding: 16px 0px 16px 16px;
-`;
-
-export const Title = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.Nunito_Bold};
-  font-size: ${({ theme }) => RFValue(theme.sizes.LARGE)}px;
-  color: ${({ theme }) => theme.colors.BLUE_SECONDARY};
-`;
-
-export const WrapperListEmpty = styled.View`
-  justify-content: center;
-  align-items: center;
-  padding: 68px 0px;
-`;
-
-export const Logo = styled.Image`
-  width: 240px;
-  height: 240px;
-`;
-
-export const TitleListEmpty = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.Nunito_SemiBold};
-  font-size: ${RFValue(18)}px;
+export const ShowListEmpty = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.Inter_SemiBold};
+  font-size: ${({ theme }) => RFValue(theme.sizes.NORMAL)}px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.BLUE_LIGHT};
-  padding: 0px 58px;
+  color: ${({ theme }) => theme.colors.primary.DARK_GREY};
+  padding: 20px 30px;
+`;
+
+export const ButtonAddNote = styled.TouchableOpacity`
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: ${({ theme }) => theme.colors.primary.BLACK};
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SpaceItems = styled.View`
+  padding: 0px 20px 10px 20px;
 `;
