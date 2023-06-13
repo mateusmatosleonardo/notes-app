@@ -1,22 +1,25 @@
-import React, { useCallback, useState } from 'react';
-import { Alert, FlatList, ListRenderItemInfo } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { FlatList, ListRenderItemInfo } from 'react-native';
 import { Header } from '../../components/Header/Header';
-import { Password } from '../../components/Password/Password';
-import { PasswordProps } from '../../components/Password/types';
-import { SeparatorItem } from '../../components/SeparatorItem/SeparatorItem';
+import { CardProps } from '../../components/Card/types';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { HomeScreenProps } from './types';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import IconListEmpty from '../../assets/images/IconListEmpty.png';
-import * as S from './styles';
+import { ButtonAddNote, Container, ShowListEmpty, SpaceItems } from './styles';
+import Icon from '@expo/vector-icons/AntDesign';
+import { Card } from '../../components/Card/Card';
+import { Search } from './Search/Search';
 
 export function Home() {
 
+  const [data, setData] = useState<CardProps[]>([]);
+  const [search, setSearch] = useState<string>('');
+  const [searchInput, setSearchInput] = useState<string>('');
+  const [filteredNote, setFilteredNote] = useState<CardProps[]>([]);
+
   const navigation = useNavigation<HomeScreenProps>();
 
-  const [data, setData] = useState<PasswordProps[]>([]);
-
-  const { getItem, setItem } = useAsyncStorage('@savepass:passwords');
+  const { getItem } = useAsyncStorage('@savepass:passwords');
 
   async function handleFetchData() {
     try {
@@ -28,33 +31,30 @@ export function Home() {
     }
   }
 
-  async function handleRemove(servicename: string | undefined) {
-    // const response = await getItem();
-    // const previousData = response ? JSON.parse(response) : [];
+  function applyFilter() {
+    const filteredNote = data.filter(n =>
+      n.title.toLowerCase().includes(searchInput.toLowerCase()) ||
+      n.content.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setFilteredNote(filteredNote);
+  }
 
-    // const data = previousData.filter((item: PasswordProps) => item.id !== id);
-
-    // setItem(JSON.stringify(data));
-    // setData(data);
-    Alert.alert(`Tem certeza que dejesa excluir ${servicename}`);
+  function handleSearchButtonPress() {
+    setSearch(searchInput);
+    console.log('press')
   }
 
   function ListEmptyComponent() {
     return (
-      <S.WrapperListEmpty>
-        <S.Logo
-          source={IconListEmpty}
-          resizeMode='contain' />
-        <S.TitleListEmpty>
-          Você ainda não possui senhas salvas...
-        </S.TitleListEmpty>
-      </S.WrapperListEmpty>
+      <ShowListEmpty>
+        Você ainda não possui nenhuma nota...
+      </ShowListEmpty>
     )
   }
 
-  function renderItem({ item }: ListRenderItemInfo<PasswordProps>) {
-    return <Password {...item}
-      onPress={() => handleRemove(item.servicename)}
+  function renderItem({ item }: ListRenderItemInfo<CardProps>) {
+    return <Card {...item}
+      navigation={() => navigation.navigate('Details', { id: item.id })}
     />
   }
 
@@ -62,27 +62,40 @@ export function Home() {
     handleFetchData();
   }, []));
 
+  useEffect(() => {
+    applyFilter();
+  }, [search]);
+
   return (
     <React.Fragment>
-      <S.Container>
-        <Header onPress={() => navigation.navigate('Form')} />
-        {
-          data.length === 0 ?
-            <>
-            </>
-            :
-            <S.WrapperText>
-              <S.Title>Suas senhas</S.Title>
-            </S.WrapperText>
-        }
-        <FlatList
-          data={data}
-          keyExtractor={(item) => String(item.id)}
-          renderItem={renderItem}
-          ItemSeparatorComponent={SeparatorItem}
-          ListEmptyComponent={() => ListEmptyComponent()}
-        />
-      </S.Container>
+      <Container>
+        <Header />
+        <SpaceItems>
+          <Search
+            value={searchInput}
+            onChangeText={(text) => setSearchInput(text)}
+            handleSearchButtonPress={handleSearchButtonPress}
+          />
+        </SpaceItems>
+        {search.length > 0 ?
+          <FlatList
+            data={filteredNote}
+            keyExtractor={(item) => String(item.id)}
+            renderItem={renderItem}
+            contentContainerStyle={{ paddingTop: 10, paddingBottom: 90, alignItems: 'center' }}
+            ListEmptyComponent={() => ListEmptyComponent()}
+          /> : <FlatList
+            data={data}
+            keyExtractor={(item) => String(item.id)}
+            renderItem={renderItem}
+            contentContainerStyle={{ paddingTop: 10, paddingBottom: 90, alignItems: 'center' }}
+            ListEmptyComponent={() => ListEmptyComponent()}
+          />}
+
+        <ButtonAddNote onPress={() => navigation.navigate('Form')}>
+          <Icon name="plus" size={24} color="#fff" />
+        </ButtonAddNote>
+      </Container>
     </React.Fragment>
   );
 }
