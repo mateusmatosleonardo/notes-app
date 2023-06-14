@@ -1,21 +1,21 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, ListRenderItemInfo, Keyboard } from 'react-native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Header } from '../../components/Header/Header';
 import { CardProps } from '../../components/Card/types';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import { HomeScreenProps } from './types';
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import { ButtonAddNote, Container, ShowListEmpty, SpaceItems } from './styles';
-import Icon from '@expo/vector-icons/AntDesign';
 import { Card } from '../../components/Card/Card';
 import { Search } from './Search/Search';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import { HomeScreenProps } from './types';
+import { ButtonAddNote, Container, ShowListEmpty, SpaceItems } from './styles';
+import Icon from '@expo/vector-icons/AntDesign';
 
 export function Home() {
 
   const [data, setData] = useState<CardProps[]>([]);
+  const [filteredNote, setFilteredNote] = useState<CardProps[]>([]);
   const [search, setSearch] = useState<string>('');
   const [searchInput, setSearchInput] = useState<string>('');
-  const [filteredNote, setFilteredNote] = useState<CardProps[]>([]);
 
   const navigation = useNavigation<HomeScreenProps>();
 
@@ -41,7 +41,7 @@ export function Home() {
 
   function handleSearchButtonPress() {
     setSearch(searchInput);
-    setSearchInput('');
+    console.log('searchInput');
   }
 
   function handleSearchInputSubmit() {
@@ -65,11 +65,8 @@ export function Home() {
 
   useFocusEffect(useCallback(() => {
     handleFetchData();
-  }, []));
-
-  useEffect(() => {
     applyFilter();
-  }, [search]);
+  }, [search]));
 
   return (
     <React.Fragment>
