@@ -1,28 +1,32 @@
 import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { StyleSheet } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
+
+const statusBarHeight = StatusBar.currentHeight
+  ? StatusBar.currentHeight + 0
+  : 0;
 
 export const Container = styled.KeyboardAvoidingView`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.primary.WHITE};
 `;
 
 export const SafeAreaView = styled.SafeAreaView`
-  padding-top: 20px;
+  padding-top: ${statusBarHeight}px;
 `;
 
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background-color: ${({ theme }) => theme.colors.BLUE_SECONDARY};
+  padding: 16px 20px;
+  background-color: ${({ theme }) => theme.colors.primary.WHITE};
 `;
 
 export const Title = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.Nunito_SemiBold};
-  font-size: ${RFValue(22)}px;
-  color: ${({ theme }) => theme.colors.WHITE};
+  font-family: ${({ theme }) => theme.fonts.Inter_Medium};
+  font-size: ${({ theme }) => RFValue(theme.sizes.LARGE)}px;
+  color: ${({ theme }) => theme.colors.primary.BLACK};
 `;
 
 export const Touch = styled.Pressable``;
@@ -34,56 +38,71 @@ export const Invisible = styled.View`
 
 export const Form = styled.ScrollView`
   width: 100%;
-  padding: 20px 25px;
+  padding: 0px 20px 20px 20px;
 `;
 
 export const InputArea = styled.View`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  height: 48px;
+  height: 50px;
   margin-top: 20px;
-  padding-top: 2px;
-  background-color: ${({ theme }) => theme.colors.GRAY};
-  border-radius: 2px;
-`;
-
-export const Diviser = styled.View`
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  border-right-width: 1px;
-  border-color: #dedede;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: ${({ theme }) => theme.colors.primary.DARK_GREY};
 `;
 
 export const KeyboardDismiss = styled.Pressable`
   flex: 1;
-  /* padding-top: 40px; */
 `;
 
 export const TextError = styled.Text`
   font-size: ${RFValue(13.5)}px;
-  font-family: ${({ theme }) => theme.fonts.Nunito_Regular};
-  color: ${({ theme }) => theme.colors.RED_ALERT};
+  font-family: ${({ theme }) => theme.fonts.Inter_Regular};
+  color: ${({ theme }) => theme.colors.primary.ERROR};
+`;
+
+export const WrapperPicker = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: ${({ theme }) => theme.colors.primary.MIDDLE_GREY};
+`;
+
+export const WrapperAbsoluteView = styled.View`
+  width: 100%;
+`;
+
+export const AbsoluteView = styled.View`
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  width: 100%;
+  padding: 0px 20px;
 `;
 
 export const styles = StyleSheet.create({
   input: {
     flex: 1,
-    borderColor: "#99bfe7",
-    fontFamily: "Nunito_400Regular",
+    fontFamily: "Inter_400Regular",
     fontSize: 16,
-    paddingLeft: 12,
+    paddingHorizontal: 8,
     color: "#313030",
   },
   button: {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    height: 45,
-    backgroundColor: "#679ad8",
+    height: 46,
+    backgroundColor: "#151515",
     marginTop: 20,
-    marginBottom: 40,
-    borderRadius: 2,
+    borderRadius: 6,
+  },
+  picker: {
+    width: "100%",
   },
 });
