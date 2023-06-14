@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FlatList, ListRenderItemInfo } from 'react-native';
+import { FlatList, ListRenderItemInfo, Keyboard } from 'react-native';
 import { Header } from '../../components/Header/Header';
 import { CardProps } from '../../components/Card/types';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
@@ -41,7 +41,12 @@ export function Home() {
 
   function handleSearchButtonPress() {
     setSearch(searchInput);
-    console.log('press')
+    setSearchInput('');
+  }
+
+  function handleSearchInputSubmit() {
+    Keyboard.dismiss();
+    handleSearchButtonPress();
   }
 
   function ListEmptyComponent() {
@@ -74,6 +79,7 @@ export function Home() {
           <Search
             value={searchInput}
             onChangeText={(text) => setSearchInput(text)}
+            onSubmitEditing={handleSearchInputSubmit}
             handleSearchButtonPress={handleSearchButtonPress}
           />
         </SpaceItems>
