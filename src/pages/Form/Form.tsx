@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './styles';
 import uuid from 'react-native-uuid';
-import { Keyboard, Platform } from 'react-native';
+import { Keyboard, Platform, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useForm as useFormHook } from '../../hooks/useForm';
 import { Controller, useForm } from 'react-hook-form';
@@ -9,26 +9,37 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import { PasswordProps } from '../../components/Password/types';
+import { CardProps } from '../../components/Card/types';
 import { flashMessage } from '../../utils/FlashMessage';
 import { FormScreenProps } from './types';
-import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import BackIcon from '@expo/vector-icons/Ionicons';
-import Envelope from '@expo/vector-icons/FontAwesome';
-import User from '@expo/vector-icons/Feather';
-import Padlock from '@expo/vector-icons/Feather';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import { Picker } from '@react-native-picker/picker';
+import Icon from '@expo/vector-icons/FontAwesome5';
+
+import { useTheme } from 'styled-components';
 
 export function Form() {
 
-  const { isFocusedService,
-    isFocusedUser,
-    isFocusedPassword,
-    handleInputFocusService,
-    handleInputBlurService,
-    handleInputFocusUser,
-    handleInputBlurUser,
-    handleInputFocusPassword,
-    handleInputBlurPassword,
+  const [categories] = useState<string[]>
+    (['universidade',
+      'pesquisa',
+      'outro',
+      'ideia',
+      'podcast',
+      'leitura',
+      'artigo',
+      'inspiração']);
+
+  const [selectedCategory, setSelectedCategory] = useState<string>(categories[0]);
+
+  const { colors } = useTheme();
+
+  const { isFocusedTitle,
+    handleInputFocusTitle,
+    handleInputBlurTitle,
+    isFocusedContent,
+    handleInputFocusContent,
+    handleInputBlurContent
   } = useFormHook();
 
   const { getItem, setItem } = useAsyncStorage('@savepass:passwords');
@@ -39,20 +50,20 @@ export function Form() {
     resolver: yupResolver(schema)
   });
 
-  async function handleNewPassword(data: PasswordProps) {
+  async function handleNewPassword(data: CardProps) {
     data.id = uuid.v4();
+    data.category = selectedCategory;
     try {
-
       const response = await getItem();
       const previousData = response ? JSON.parse(response) : [];
 
-      const newData = [...previousData, data];
+      const newData = [data, ...previousData];
 
       await setItem(JSON.stringify(newData));
 
       flashMessage({
         message: 'Sucesso',
-        description: 'Cadastrado com sucesso!',
+        description: 'Nota adicionada!',
         type: 'success'
       });
     } catch (e) {
@@ -69,146 +80,90 @@ export function Form() {
     <S.Container behavior={Platform.OS === 'ios' ? "padding" : "height"}>
       <S.SafeAreaView>
         <S.Header>
-          {/* change name Touch */}
           <S.Touch onPress={() => navigation.goBack()}>
-            <BackIcon name='chevron-back' color='#fafafa' size={26} />
+            <Icon name='long-arrow-alt-left' color={colors.primary.BLACK} size={26} />
           </S.Touch>
-          <S.Title>Cadastro</S.Title>
+          <S.Title>Adicionar nota</S.Title>
           <S.Invisible />
         </S.Header>
       </S.SafeAreaView>
       <S.KeyboardDismiss onPress={Keyboard.dismiss}>
         <S.Form>
           <Controller
-            name='servicename'
+            name='title'
             control={control}
             render={({ field: { value, onChange } }) => (
               <S.InputArea
-                style={isFocusedService ?
-                  { borderBottomWidth: 2, borderColor: '#99bfe7' } :
-                  { borderBottomWidth: 2, borderColor: '#EEEEEE' }
+                style={isFocusedTitle ?
+                  { borderColor: colors.primary.DARK_GREY } :
+                  { borderColor: colors.primary.MIDDLE_GREY }
                 }
               >
-                <S.Diviser>
-                  <Envelope
-                    name='envelope-o'
-                    color={(isFocusedService || !!value) ? '#99bfe7' : '#AAAAAA'}
-                    size={22}
-                    style={{ paddingHorizontal: 12 }}
-                  />
-                </S.Diviser>
                 <Input
                   value={value}
                   onChangeText={onChange}
-                  placeholder='Serviço'
-                  placeholderTextColor='#AAAAAA'
-                  autoCapitalize='none'
-                  onFocus={handleInputFocusService}
-                  onBlur={handleInputBlurService}
+                  placeholder='Título'
+                  placeholderTextColor={colors.primary.DARK_GREY}
+                  onFocus={handleInputFocusTitle}
+                  onBlur={handleInputBlurTitle}
                   style={S.styles.input}
                 />
               </S.InputArea>
             )}
           />
-          {errors.servicename &&
+          {errors.title &&
             <S.TextError>
-              {errors.servicename?.message}
+              {errors.title?.message}
             </S.TextError>}
           <Controller
-            name='username'
+            name='content'
             control={control}
             render={({ field: { value, onChange } }) => (
               <S.InputArea
-                style={isFocusedUser ?
-                  { borderBottomWidth: 2, borderColor: '#99bfe7' } :
-                  { borderBottomWidth: 2, borderColor: '#EEEEEE' }
-                }
-              >
-                <S.Diviser>
-                  <User
-                    name='user'
-                    color={(isFocusedUser || !!value) ? '#99bfe7' : '#AAAAAA'}
-                    size={22}
-                    style={{ paddingHorizontal: 12 }}
-                  />
-                </S.Diviser>
+                style={{
+                  height: 92,
+                  alignItems: 'flex-start',
+                  borderColor: isFocusedContent ? colors.primary.DARK_GREY : colors.primary.MIDDLE_GREY
+                }}>
                 <Input
                   value={value}
                   onChangeText={onChange}
-                  placeholder='E-mail ou usuário'
-                  placeholderTextColor='#AAAAAA'
-                  keyboardType='email-address'
-                  autoCapitalize='none'
-                  onFocus={handleInputFocusUser}
-                  onBlur={handleInputBlurUser}
+                  placeholder='Conteúdo'
+                  placeholderTextColor={colors.primary.DARK_GREY}
                   style={S.styles.input}
-                />
-              </S.InputArea>
-            )}
-          />
-          {errors.username &&
-            <S.TextError>
-              {errors.username?.message}
-            </S.TextError>}
-          <Controller
-            name='password'
-            control={control}
-            render={({ field: { value, onChange } }) => (
-              <S.InputArea
-                style={isFocusedPassword ?
-                  { borderBottomWidth: 2, borderColor: '#99bfe7' } :
-                  { borderBottomWidth: 2, borderColor: '#EEEEEE' }
-                }
-              >
-                <S.Diviser>
-                  <Padlock
-                    name='lock'
-                    color={(isFocusedPassword || !!value) ? '#99bfe7' : '#AAAAAA'}
-                    size={22}
-                    style={{ paddingHorizontal: 12 }}
-                  />
-                </S.Diviser>
-                <Input
-                  value={value}
-                  onChangeText={onChange}
-                  placeholder='Senha'
-                  placeholderTextColor='#AAAAAA'
-                  autoCapitalize='none'
-                  secureTextEntry
-                  onFocus={handleInputFocusPassword}
-                  onBlur={handleInputBlurPassword}
-                  style={S.styles.input}
-                />
-              </S.InputArea>
-            )}
-          />
-          {errors.password &&
-            <S.TextError>
-              {errors.password?.message}
-            </S.TextError>}
-          <Controller
-            name='annotation'
-            control={control}
-            render={({ field: { value, onChange } }) => (
-              <S.InputArea style={{ height: 92, alignItems: 'flex-start' }}>
-                <Input
-                  value={value}
-                  onChangeText={onChange}
-                  placeholder='Deseja fazer uma anotação?'
-                  placeholderTextColor='#AAAAAA'
-                  autoCapitalize='none'
-                  style={[S.styles.input, { paddingTop: 8 }]}
+                  onFocus={handleInputFocusContent}
+                  onBlur={handleInputBlurContent}
                   multiline={true}
                 />
               </S.InputArea>
             )}
           />
-          <Button
-            title='Cadastrar'
-            style={S.styles.button}
-            onPress={handleSubmit(handleNewPassword)}
-          />
+          {errors.content &&
+            <S.TextError>
+              {errors.content?.message}
+            </S.TextError>}
+          <View style={{ flex: 1, backgroundColor: 'salmon', width: '100%', height: '100%', }} />
         </S.Form>
+        <S.WrapperAbsoluteView>
+          <S.AbsoluteView>
+            <S.WrapperPicker>
+              <Picker
+                selectedValue={selectedCategory}
+                onValueChange={(itemValue, itemIndex) => setSelectedCategory(itemValue as string)}
+                style={S.styles.picker}
+              >
+                {categories.map((category, i) => (
+                  <Picker.Item key={i} label={category[0].toUpperCase() + category.slice(1)} value={category} />
+                ))}
+              </Picker>
+            </S.WrapperPicker>
+            <Button
+              title='Adicionar'
+              style={S.styles.button}
+              onPress={handleSubmit(handleNewPassword as any)}
+            />
+          </S.AbsoluteView>
+        </S.WrapperAbsoluteView>
       </S.KeyboardDismiss>
     </S.Container >
   );
