@@ -10,7 +10,6 @@ import {
   Inter_600SemiBold,
   Inter_700Bold
 } from '@expo-google-fonts/inter';
-import { PasswordContextProvider } from './src/context/Password/provider';
 import { Loading } from './src/components/Loading/Loading';
 import FlashMessage from 'react-native-flash-message';
 import { theme } from './src/theme/theme';
