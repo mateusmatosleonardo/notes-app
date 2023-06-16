@@ -3,7 +3,6 @@ import * as S from './styleConfig';
 import uuid from 'react-native-uuid';
 import { Keyboard, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useForm as useFormHook } from '../../hooks/useForm';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema';
@@ -15,6 +14,7 @@ import { FormScreenProps } from './types';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { Picker } from '@react-native-picker/picker';
 import ArrowLeft from '@expo/vector-icons/AntDesign';
+import TagIcon from '@expo/vector-icons/FontAwesome';
 
 import { useTheme } from 'styled-components';
 import { RFValue } from 'react-native-responsive-fontsize';
@@ -22,7 +22,8 @@ import { RFValue } from 'react-native-responsive-fontsize';
 export function FormScreen() {
 
   const [categories] = useState<string[]>
-    (['universidade',
+    (['aleatório',
+      'universidade',
       'pesquisa',
       'outro',
       'ideia',
@@ -35,23 +36,15 @@ export function FormScreen() {
 
   const { colors } = useTheme();
 
-  const { isFocusedTitle,
-    handleInputFocusTitle,
-    handleInputBlurTitle,
-    isFocusedContent,
-    handleInputFocusContent,
-    handleInputBlurContent
-  } = useFormHook();
-
-  const { getItem, setItem } = useAsyncStorage('@savepass:passwords');
-
-  const navigation = useNavigation<FormScreenProps>();
+  const { getItem, setItem } = useAsyncStorage('@savenote:notes');
 
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
 
-  async function handleNewPassword(data: CardProps) {
+  const navigation = useNavigation<FormScreenProps>();
+
+  async function handleAddNote(data: CardProps) {
     data.id = uuid.v4();
     data.category = selectedCategory;
     try {
@@ -93,19 +86,12 @@ export function FormScreen() {
               name='title'
               control={control}
               render={({ field: { value, onChange } }) => (
-                <S.InputArea
-                  style={isFocusedTitle ?
-                    { borderColor: colors.primary.DARK_GREY } :
-                    { borderColor: colors.primary.MIDDLE_GREY }
-                  }
-                >
+                <S.InputArea>
                   <Input
                     value={value}
                     onChangeText={onChange}
                     placeholder='Título'
                     placeholderTextColor={colors.primary.BLACK}
-                    onFocus={handleInputFocusTitle}
-                    onBlur={handleInputBlurTitle}
                     style={S.styles.input}
                   />
                 </S.InputArea>
@@ -120,19 +106,13 @@ export function FormScreen() {
               control={control}
               render={({ field: { value, onChange } }) => (
                 <S.InputArea
-                  style={{
-                    flex: 1,
-                    alignItems: 'flex-start',
-                    borderColor: isFocusedContent ? colors.primary.DARK_GREY : colors.primary.MIDDLE_GREY
-                  }}>
+                  style={{ flex: 1, alignItems: 'flex-start' }}>
                   <Input
                     value={value}
                     onChangeText={onChange}
                     placeholder='Conteúdo'
                     placeholderTextColor={colors.primary.BLACK}
-                    style={[S.styles.input, { fontSize: RFValue(16), fontFamily: "Inter_400Regular", }]}
-                    onFocus={handleInputFocusContent}
-                    onBlur={handleInputBlurContent}
+                    style={[S.styles.input, { fontSize: RFValue(16), fontFamily: "Inter_400Regular" }]}
                     multiline={true}
                   />
                 </S.InputArea>
@@ -143,6 +123,9 @@ export function FormScreen() {
                 {errors.content?.message}
               </S.TextError>}
           </S.Form>
+          <S.TagWrapper>
+            <S.TagText>Adicione uma tag para a anotação</S.TagText>
+          </S.TagWrapper>
           <S.Footer>
             <S.WrapperPicker>
               <Picker
@@ -158,7 +141,7 @@ export function FormScreen() {
             <Button
               title='Adicionar'
               style={S.styles.button}
-              onPress={handleSubmit(handleNewPassword as any)}
+              onPress={handleSubmit(handleAddNote as any)}
             />
           </S.Footer>
         </S.KeyboardDismiss>
