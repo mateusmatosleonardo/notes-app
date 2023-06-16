@@ -6,7 +6,7 @@ import { Loading } from '../../components/Loading/Loading';
 import { Popup } from './Popup';
 import HeaderOptions from './HeaderOptions';
 
-export function Details() {
+export function DetailsScreen() {
 
   const { note,
     handleFetchData,
@@ -26,7 +26,7 @@ export function Details() {
         <React.Fragment>
           <HeaderOptions
             onBackPress={() => navigation.goBack()}
-            onEditPress={() => console.log('edit')}
+            onEditPress={() => navigation.navigate('UpdateScreen', { note: note.note })}
             onDeletePress={() => setShowPopup(true)}
           />
           <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
