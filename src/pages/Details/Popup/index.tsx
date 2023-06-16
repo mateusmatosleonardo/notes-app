@@ -23,7 +23,7 @@ export function Popup({ showPopup, handleCancel, handleDelete }: PopupProps) {
       animationType="fade">
       <Container>
         <PopupContainer style={{ elevation: 4 }}>
-          <PopupTitle>Deseja excluir essa nota?</PopupTitle>
+          <PopupTitle>Deseja excluir esta anotação?</PopupTitle>
           <WrapperButtons>
             <Pressable onPress={handleCancel}>
               <Option color={colors.primary.BLACK}>Cancelar</Option>
