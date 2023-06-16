@@ -61,7 +61,7 @@ export function UpdateScreen() {
       const response: string | null = await getItem();
       const previousData: CardProps[] = response ? JSON.parse(response) : [];
 
-      const updatedData = previousData.map((item: CardProps) => {
+      const updatedData: CardProps[] = previousData.map((item: CardProps) => {
         if (item.id === note.id) {
           return {
             ...item,
@@ -82,7 +82,7 @@ export function UpdateScreen() {
       });
 
       navigation.navigate("HomeScreen");
-    } catch (e) {
+    } catch (e: unknown) {
       flashMessage({
         message: 'Erro',
         description: 'Não foi possível modificar a nota.',
