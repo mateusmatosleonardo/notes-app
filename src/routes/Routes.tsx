@@ -5,6 +5,7 @@ import { HomeScreen } from "../pages/Home";
 import { FormScreen } from "../pages/Form";
 import { DetailsScreen } from "../pages/Details";
 import { UpdateScreen } from "../pages/Update";
+import RegisterScreen from "../pages/Register";
 
 const Stack = createStackNavigator();
 
@@ -12,7 +13,7 @@ export function Routes() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="RegisterScreen" screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
@@ -26,6 +27,9 @@ export function Routes() {
         <Stack.Screen
           name="UpdateScreen"
           component={UpdateScreen} />
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen} />
       </Stack.Navigator>
     </NavigationContainer >
   )
