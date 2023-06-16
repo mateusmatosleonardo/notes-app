@@ -1,6 +1,9 @@
+import { NoteState } from "../pages/Details/types";
+
 export type RootStackParamsList = {
   Register: undefined;
-  Home: undefined;
-  Form: undefined;
-  Details: { id: string | number[] | undefined };
+  HomeScreen: undefined;
+  FormScreen: undefined;
+  DetailsScreen: { id: string | number[] | undefined };
+  UpdateScreen: NoteState;
 };
