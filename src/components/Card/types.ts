@@ -7,6 +7,7 @@ export interface CardProps {
 }
 
 export type CategoryColorsProps = {
+  aleatório: string;
   universidade: string;
   pesquisa: string;
   outro: string;
