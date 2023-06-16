@@ -22,7 +22,12 @@ export function flashMessage({
     textStyle: { fontFamily: "Inter_400Regular" },
     style: [
       style,
-      { marginTop: 42, marginHorizontal: 22, borderRadius: 6, paddingTop: 10 },
+      {
+        marginTop: 42,
+        marginHorizontal: 22,
+        borderRadius: 6,
+        paddingTop: 10,
+      },
     ],
   });
 }
