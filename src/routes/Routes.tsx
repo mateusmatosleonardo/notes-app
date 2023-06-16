@@ -1,11 +1,11 @@
 import React from "react";
-import { NavigationContainer, useFocusEffect } from "@react-navigation/native"
+import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack";
 import { HomeScreen } from "../pages/Home";
 import { FormScreen } from "../pages/Form";
 import { DetailsScreen } from "../pages/Details";
 import { UpdateScreen } from "../pages/Update";
-import RegisterScreen from "../pages/Register";
+import { RegisterScreen } from "../pages/Register";
 
 const Stack = createStackNavigator();
 
