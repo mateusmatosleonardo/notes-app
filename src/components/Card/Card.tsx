@@ -17,6 +17,7 @@ export function Card({ title, content, category, navigation }: CardProps) {
   const { colors } = useTheme();
 
   const categoryColors: CategoryColorsProps = {
+    aleatório: colors.secondary.GREY,
     universidade: colors.secondary.YELLOW,
     pesquisa: colors.secondary.PINK,
     outro: colors.secondary.GREEN,
