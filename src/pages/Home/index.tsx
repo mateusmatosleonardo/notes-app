@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { FlatList, ListRenderItemInfo, Keyboard } from 'react-native';
+import { FlatList, ListRenderItemInfo, Keyboard, BackHandler } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Header } from '../../components/Header/Header';
 import { CardProps } from '../../components/Card/types';
@@ -7,8 +7,8 @@ import { Card } from '../../components/Card/Card';
 import { Search } from './Search/Search';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { HomeScreenProps } from './types';
-import { ButtonAddNote, Container, ShowListEmpty, SpaceItems } from './styles';
-import Icon from '@expo/vector-icons/AntDesign';
+import { AddNoteButton, Container, ShowListEmpty, SpaceItems } from './styles';
+import AddNoteIcon from '@expo/vector-icons/AntDesign';
 
 export function HomeScreen() {
 
@@ -19,7 +19,7 @@ export function HomeScreen() {
 
   const navigation = useNavigation<HomeScreenProps>();
 
-  const { getItem } = useAsyncStorage('@savepass:passwords');
+  const { getItem } = useAsyncStorage('@savenote:notes');
 
   async function handleFetchData() {
     try {
@@ -62,9 +62,14 @@ export function HomeScreen() {
     />
   }
 
+  const backAction = () => true;
+
   useFocusEffect(useCallback(() => {
     handleFetchData();
     applyFilter();
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
+    return () => backHandler.remove();
   }, [search]));
 
   return (
@@ -93,10 +98,9 @@ export function HomeScreen() {
             contentContainerStyle={{ paddingTop: 10, paddingBottom: 90, alignItems: 'center' }}
             ListEmptyComponent={() => ListEmptyComponent()}
           />}
-
-        <ButtonAddNote onPress={() => navigation.navigate('FormScreen')}>
-          <Icon name="plus" size={24} color="#fff" />
-        </ButtonAddNote>
+        <AddNoteButton onPress={() => navigation.navigate('FormScreen')}>
+          <AddNoteIcon name="plus" size={24} color="#fff" />
+        </AddNoteButton>
       </Container>
     </React.Fragment>
   );
