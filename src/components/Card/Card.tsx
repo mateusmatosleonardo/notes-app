@@ -26,6 +26,13 @@ export function Card({ title, content, category, navigation }: CardProps) {
     leitura: colors.secondary.PURPLE,
     artigo: colors.secondary.ORANGE,
     inspiração: colors.secondary.BROWN,
+    tarefas: colors.secondary.MINT,
+    compras: colors.secondary.LAVENDER,
+    finanças: colors.secondary.PEACH,
+    receitas: colors.secondary.AQUA,
+    metas: colors.secondary.CORAL,
+    dicas: colors.secondary.LILAC,
+    trabalho: colors.secondary.SAGE,
   };
 
   const formattedTitle = category.charAt(0).toUpperCase() + category.slice(1);
@@ -33,7 +40,7 @@ export function Card({ title, content, category, navigation }: CardProps) {
   return (
     <WrapperCard onPress={navigation} style={{ elevation: 1 }}>
       <WrapperTitleCard>
-        <TitleCard>{title}</TitleCard>
+        <TitleCard numberOfLines={1}>{title}</TitleCard>
       </WrapperTitleCard>
       <Content numberOfLines={3}>{content}</Content>
       <WrapperCategory>
