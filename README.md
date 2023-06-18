@@ -1,5 +1,5 @@
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/f98c223e-805f-4324-ad59-1e4fae672a60" width="100px;" alt="icon"/><br>
- 
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/e7ebad05-6760-4d99-a129-fe7a230d55f8" width="100px;" alt="icon"/><br>
+
 | Codinome | Framework | Linguagem | Plataforma |
 |---|---|---|---|
 | Gerenciador de notas | Expo | JavaScript/TypeScript | Android |
@@ -40,9 +40,15 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 - Buscar notas por título da nota
 
 ## Preview
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/3fb8e5b4-e3f4-44bd-9cd5-8313ed8aab81" width="200px;" alt="icon"/><br>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/8009981a-f158-49e9-b2b5-a7de4f824c61" width="200px;" alt="icon"/><br>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/a1cabc66-0d63-4572-afb8-fe0b49d096de" width="200px;" alt="icon"/><br>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/c4b9b90d-ed07-4fab-8be1-9e9ab84361fa" width="800px;" alt="icon"/>
+<!-- 
+<br>
+<br>
+<br>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/3fb8e5b4-e3f4-44bd-9cd5-8313ed8aab81" width="200px; margin=100px" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/8009981a-f158-49e9-b2b5-a7de4f824c61" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/a1cabc66-0d63-4572-afb8-fe0b49d096de" width="200px;" alt="icon"/>
+-->
 
 ## Pré-requisitos
 - [✔️] git
