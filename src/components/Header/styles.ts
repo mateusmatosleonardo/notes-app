@@ -11,7 +11,7 @@ export const HeaderContainer = styled.View`
   background-color: ${({ theme }) => theme.colors.primary.WHITE};
 `;
 
-export const AvatarWrapper = styled.View`
+export const AvatarWrapper = styled.Pressable`
   width: 62px;
   height: 62px;
 `;
