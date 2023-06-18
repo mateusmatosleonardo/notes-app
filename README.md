@@ -40,15 +40,16 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 - Buscar notas por título da nota
 
 ## Preview
-![Frame 1](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/9ced99a5-9e17-4cee-aa49-0a6242b6aeb0)
-<!-- 
+![frame](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fc8a33a8-0ef0-42dc-b33a-b1bfc4c7a68b)
 <br>
 <br>
-<br>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/3fb8e5b4-e3f4-44bd-9cd5-8313ed8aab81" width="200px; margin=100px" alt="icon"/>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/8009981a-f158-49e9-b2b5-a7de4f824c61" width="200px;" alt="icon"/>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/a1cabc66-0d63-4572-afb8-fe0b49d096de" width="200px;" alt="icon"/>
--->
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/3fb8e5b4-e3f4-44bd-9cd5-8313ed8aab81" width="200px;" alt="icon"/>
+![invisible](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fdd70eea-978a-45e6-9482-e111043d9bb6)
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/5caac5ed-35c9-4e3f-83c7-9ea00338020c" width="200px;" alt="icon"/>
+![invisible](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fdd70eea-978a-45e6-9482-e111043d9bb6)
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/87165733-d132-4a74-91cb-72ebf8791d57" width="200px;" alt="icon"/>
+
+
 
 ## Pré-requisitos
 - [✔️] git
