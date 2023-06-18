@@ -40,7 +40,7 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 - Buscar notas por título da nota
 
 ## Preview
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/c4b9b90d-ed07-4fab-8be1-9e9ab84361fa" width="800px;" alt="icon"/>
+![Frame 1](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/9ced99a5-9e17-4cee-aa49-0a6242b6aeb0)
 <!-- 
 <br>
 <br>
