@@ -11,7 +11,6 @@ import {
   Inter_700Bold
 } from '@expo-google-fonts/inter';
 import { Loading } from './src/components/Loading/Loading';
-import FlashMessage from 'react-native-flash-message';
 import { theme } from './src/theme/theme';
 
 export default function App() {
@@ -32,7 +31,6 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <Routes />
         <StatusBar style="auto" backgroundColor='#fafafa' />
-        <FlashMessage position="top" />
       </ThemeProvider>
     </React.Fragment>
   );
