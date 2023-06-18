@@ -3,8 +3,9 @@ import { HeaderWrapper, HeaderContainer, HeaderTitles, HeaderTitle, HeaderSubtit
 import { useTheme } from 'styled-components';
 import { useUsersStore } from '../../store/users/users';
 import UserIcon from "@expo/vector-icons/FontAwesome5";
+import { HeaderProps } from './types';
 
-export function Header() {
+export function Header({ navigation }: HeaderProps) {
 
   const { state: { user } } = useUsersStore();
 
@@ -17,9 +18,9 @@ export function Header() {
           <HeaderTitle>Notas</HeaderTitle>
           <HeaderSubtitle>Olá, {user?.name}! 👋</HeaderSubtitle>
         </HeaderTitles>
-        <AvatarWrapper>
+        <AvatarWrapper onPress={navigation}>
           <Avatar
-            source={user?.avatar_url ? { uri: user?.avatar_url } : <UserIcon name="user-circle" size={200} color={colors.primary.DARK_GREY} />}
+            source={user?.avatar_url !== '' ? { uri: user?.avatar_url } : <UserIcon name="user-circle" size={20} color={colors.primary.BLACK} />}
           />
         </AvatarWrapper>
       </HeaderContainer>
