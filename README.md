@@ -56,7 +56,7 @@ Após todas as dependências atendidas e instaladas na sua máquina, basta clona
 <br>
 `git clone git@github.com:mateusmatosleonardo/notes-app.git`
 <br>
-`cd notes`
+`cd notes-app`
 
 ## Configuração do projeto
 
