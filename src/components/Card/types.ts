@@ -16,4 +16,11 @@ export type CategoryColorsProps = {
   leitura: string;
   artigo: string;
   inspiração: string;
+  tarefas: string;
+  compras: string;
+  finanças: string;
+  receitas: string;
+  metas: string;
+  dicas: string;
+  trabalho: string;
 };
