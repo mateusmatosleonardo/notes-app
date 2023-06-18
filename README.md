@@ -1,4 +1,4 @@
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/f98c223e-805f-4324-ad59-1e4fae672a60" width="100px;" alt="photo by Mateus Leonardo"/><br>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/f98c223e-805f-4324-ad59-1e4fae672a60" width="100px;" alt="icon"/><br>
  
 | Codinome | Framework | Linguagem | Plataforma |
 |---|---|---|---|
@@ -40,7 +40,9 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 - Buscar notas por título da nota
 
 ## Preview
-Em breve!
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/3fb8e5b4-e3f4-44bd-9cd5-8313ed8aab81" width="300px;" alt="icon"/><br>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/8009981a-f158-49e9-b2b5-a7de4f824c61" width="300px;" alt="icon"/><br>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/a1cabc66-0d63-4572-afb8-fe0b49d096de" width="300px;" alt="icon"/><br>
 
 ## Pré-requisitos
 - [✔️] git
