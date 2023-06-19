@@ -42,7 +42,6 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/65ca0d52-b027-46ff-bc67-53a3f0cb6318" width="200px;" alt="icon"/>
 <!--![invisible](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fdd70eea-978a-45e6-9482-e111043d9bb6)-->
 <br>
-<br>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/5338432a-b2bf-4158-a4d2-9cacdeeacd30" width="200px;" alt="icon"/>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/b3e0e8af-e171-46e8-b117-7d5ab27ab557" width="200px;" alt="icon"/>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/d60f4e96-a916-4a15-a81d-7d64da62973d" width="200px;" alt="icon"/>
