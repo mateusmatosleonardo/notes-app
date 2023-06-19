@@ -15,6 +15,7 @@
 - Execução do projeto
   - Android
 - Colaboradores
+- Créditos
 - Suporte
   
 
@@ -100,6 +101,10 @@ Baixe o aplicativo Exgo Go. Em seguida leia o QR code com a câmera ou insira a 
     </td>
   </tr>
 </table>
+
+## Créditos
+- Design original por **Nedelina Chervenkova**
+- Adaptado e implementado por **Mateus Leonardo**
 
 ## Suporte
 Qualquer dúvida, sugestão ou relato de bugs, submete um novo PR ou entre em contato com m4teusleonardo@gmail.com
