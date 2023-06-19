@@ -33,7 +33,7 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 
 
 ## Preview
-![frame](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fc8a33a8-0ef0-42dc-b33a-b1bfc4c7a68b)
+![Frame-Main](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/e4e0307c-161e-4ec1-a7a2-a3cf3ad500ad)
 <br>
 <br>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/3fb8e5b4-e3f4-44bd-9cd5-8313ed8aab81" width="200px;" alt="icon"/>
