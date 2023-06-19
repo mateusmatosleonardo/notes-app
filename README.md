@@ -78,13 +78,11 @@ ou
 ## Execução do projeto
 
 ### Build
-Para rodar o aplicativo segue os seguintes comandos:
-<br>
-Para iniciar o metrô:
+Para rodar o aplicativo segue o seguinte comando:
 <br>
 `npx expo start`
 <br>
-Baixe o aplicativo Exgo Go. Em seguida leia o QR code com a câmera ou insira a url do metrô em seu dispositivo físico ou emulador.
+Em seguida baixe o aplicativo Exgo Go e leia o QR code com a câmera ou insira a url do metrô em seu dispositivo físico ou emulador.
 
 ## Colaboradores
 <table>
