@@ -16,12 +16,12 @@ export function Header({ navigation }: HeaderProps) {
       <HeaderContainer>
         <HeaderTitles>
           <HeaderTitle>Notas</HeaderTitle>
-          <HeaderSubtitle>Olá, {user?.name}! 👋</HeaderSubtitle>
+          {user?.name !== '' ?
+            <HeaderSubtitle>Olá, {user?.name}! 👋</HeaderSubtitle> :
+            <HeaderSubtitle>Olá 👋</HeaderSubtitle>}
         </HeaderTitles>
         <AvatarWrapper onPress={navigation}>
-          <Avatar
-            source={user?.avatar_url !== '' ? { uri: user?.avatar_url } : <UserIcon name="user-circle" size={20} color={colors.primary.BLACK} />}
-          />
+          {user?.avatar_url !== '' ? <Avatar source={{ uri: user?.avatar_url }} /> : <UserIcon name="user-circle" size={61.5} color={colors.primary.BLACK} />}
         </AvatarWrapper>
       </HeaderContainer>
     </HeaderWrapper>
