@@ -15,6 +15,7 @@
 - Execução do projeto
   - Android
 - Colaboradores
+- Créditos
 - Suporte
   
 
@@ -22,34 +23,30 @@
 Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado para ajudá-lo a organizar e manter todas as suas notas de forma simples e eficiente.
 
 ## Recursos
-1. Perfil do Usuário:
-- Adicionar nome e foto de usuário
-- Editar nome e foto de usuário
+- Perfil Personalizado: Os usuários podem adicionar uma foto de perfil e personalizar seu nome para uma experiência única.
+- Criação de Notas: Os usuários podem criar novas notas, fornecendo um título, conteúdo e selecionando uma categoria.
+-  Edição de Notas: Os usuários podem editar suas notas existentes, permitindo que atualizem o título, conteúdo, categoria e outros detalhes conforme necessário.
+- Exclusão de Notas: Os usuários têm a opção de excluir notas que não são mais relevantes ou necessárias.
+- Adição de Tags: Os usuários podem adicionar tags às suas notas para categorizá-las e facilitar a organização e busca posterior.
+- Compartilhamento de Notas: Os usuários podem compartilhar suas notas com outras pessoas por meio de mensagens, e-mail ou outros aplicativos de compartilhamento.
+- Filtragem de Notas: Filtragem avançada permite que os usuários pesquisem e visualizem notas com base em critérios específicos, como tags, título, conteúdo ou palavras-chave. Isso ajuda os usuários a encontrar rapidamente as notas relevantes em sua coleção.
+- Interface Intuitiva: A interface do aplicativo é projetada de forma amigável e intuitiva, garantindo uma experiência de usuário agradável e fácil navegação.
 
-2. Gerenciamento de Notas:
-- Criar nova nota
-- Editar conteúdo da nota existente
-- Excluir nota
-
-3. Tags:
-- Adicionar tags às notas para categorização
-
-4. Sistema de Busca:
-- Buscar notas por tags
-- Buscar notas por nome do usuário
-- Buscar notas por título da nota
 
 ## Preview
-![frame](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fc8a33a8-0ef0-42dc-b33a-b1bfc4c7a68b)
+![Frame-Main](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/e4e0307c-161e-4ec1-a7a2-a3cf3ad500ad)
 <br>
 <br>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/3fb8e5b4-e3f4-44bd-9cd5-8313ed8aab81" width="200px;" alt="icon"/>
-![invisible](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fdd70eea-978a-45e6-9482-e111043d9bb6)
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/5caac5ed-35c9-4e3f-83c7-9ea00338020c" width="200px;" alt="icon"/>
-![invisible](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fdd70eea-978a-45e6-9482-e111043d9bb6)
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/87165733-d132-4a74-91cb-72ebf8791d57" width="200px;" alt="icon"/>
-
-
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/65ca0d52-b027-46ff-bc67-53a3f0cb6318" width="200px;" alt="icon"/>
+<!--![invisible](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fdd70eea-978a-45e6-9482-e111043d9bb6)-->
+<br>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/5338432a-b2bf-4158-a4d2-9cacdeeacd30" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/b3e0e8af-e171-46e8-b117-7d5ab27ab557" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/d60f4e96-a916-4a15-a81d-7d64da62973d" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/f99a27d1-d759-44bb-bf22-d9a640b8cbcb" width="200px;" alt="icon"/>
 
 ## Pré-requisitos
 - [✔️] git
@@ -80,16 +77,12 @@ ou
 
 ## Execução do projeto
 
-### Android
-Para rodar o aplicativo segue os seguintes comandos:
-<br>
-Para iniciar o metrô:
+### Build
+Para rodar o aplicativo segue o seguinte comando:
 <br>
 `npx expo start`
 <br>
-Build:
-<br>
-Baixe o aplicativo Exgo Go. Em seguida leia o QR code com a câmera ou insira a url do metrô em seu dispositivo físico ou emulador.
+Em seguida baixe o aplicativo Exgo Go e leia o QR code com a câmera ou insira a url do metrô em seu dispositivo físico ou emulador.
 
 ## Colaboradores
 <table>
@@ -104,6 +97,10 @@ Baixe o aplicativo Exgo Go. Em seguida leia o QR code com a câmera ou insira a 
     </td>
   </tr>
 </table>
+
+## Créditos
+- Design original por **Nedelina Chervenkova**
+- Adaptado e implementado por **Mateus Leonardo**
 
 ## Suporte
 Qualquer dúvida, sugestão ou relato de bugs, submete um novo PR ou entre em contato com m4teusleonardo@gmail.com
