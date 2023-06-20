@@ -51,6 +51,7 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/d60f4e96-a916-4a15-a81d-7d64da62973d" width="200px;" alt="icon"/>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/f99a27d1-d759-44bb-bf22-d9a640b8cbcb" width="200px;" alt="icon"/>
 -->
+
 ## Pré-requisitos
 - [✔️] git
 - [✔️] VS code ou editor de código de sua preferência
