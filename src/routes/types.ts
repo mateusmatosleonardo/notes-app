@@ -6,4 +6,5 @@ export type RootStackParamsList = {
   FormScreen: undefined;
   DetailsScreen: { id: string | number[] | undefined };
   UpdateScreen: NoteState;
+  ProfileScreen: undefined;
 };

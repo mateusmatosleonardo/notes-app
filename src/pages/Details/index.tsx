@@ -9,15 +9,16 @@ import HeaderOptions from './HeaderOptions';
 export function DetailsScreen() {
 
   const { note,
-    handleFetchData,
+    fetchData,
     handleDelete,
+    handleShare,
     navigation,
     showPopup,
     setShowPopup,
   } = useDetailsController();
 
   useFocusEffect(() => {
-    handleFetchData();
+    fetchData();
   });
 
   return (
@@ -26,8 +27,9 @@ export function DetailsScreen() {
         <React.Fragment>
           <HeaderOptions
             onBackPress={() => navigation.goBack()}
-            onEditPress={() => navigation.navigate('UpdateScreen', { note: note.note })}
-            onDeletePress={() => setShowPopup(true)}
+            handleEdit={() => navigation.navigate('UpdateScreen', { note: note.note })}
+            handleDelete={() => setShowPopup(true)}
+            handleShare={() => handleShare()}
           />
           <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
             <Title>{note.note.title}</Title>
