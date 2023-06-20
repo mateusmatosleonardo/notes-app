@@ -3,10 +3,12 @@ import { Header, Options, Pressable } from "./styleConfig";
 import { HeaderOptionsProps } from "./types";
 import { useTheme } from "styled-components";
 import ArrowLeft from '@expo/vector-icons/AntDesign';
-import Trash from '@expo/vector-icons/Octicons';
-import Pencil from '@expo/vector-icons/Octicons';
+import TrashIcon from '@expo/vector-icons/Octicons';
+import PencilIcon from '@expo/vector-icons/Octicons';
+import ShareIcon from '@expo/vector-icons/Octicons';
 
-const HeaderOptions = ({ onBackPress, onEditPress, onDeletePress }: HeaderOptionsProps) => {
+
+const HeaderOptions = ({ onBackPress, handleEdit, handleDelete, handleShare }: HeaderOptionsProps) => {
   const { colors } = useTheme();
 
   return (
@@ -15,11 +17,14 @@ const HeaderOptions = ({ onBackPress, onEditPress, onDeletePress }: HeaderOption
         <ArrowLeft name='arrowleft' color={colors.primary.BLACK} size={22} />
       </Pressable>
       <Options>
-        <Pressable onPress={onEditPress}>
-          <Pencil name='pencil' color={colors.primary.BLACK} size={22} style={{ marginRight: 10 }} />
+        <Pressable onPress={handleEdit}>
+          <PencilIcon name='pencil' color={colors.primary.BLACK} size={22} style={{ marginRight: 14 }} />
         </Pressable>
-        <Pressable onPress={onDeletePress}>
-          <Trash name='trash' color={colors.primary.BLACK} size={22} />
+        <Pressable onPress={handleShare}>
+          <ShareIcon name='share' color={colors.primary.BLACK} size={22} style={{ marginRight: 14 }} />
+        </Pressable>
+        <Pressable onPress={handleDelete}>
+          <TrashIcon name='trash' color={colors.primary.BLACK} size={22} />
         </Pressable>
       </Options>
     </Header>
