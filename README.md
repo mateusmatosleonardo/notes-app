@@ -1,4 +1,4 @@
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/e7ebad05-6760-4d99-a129-fe7a230d55f8" width="100px;" alt="icon"/><br>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/893ac71e-4c91-4322-bbd5-b968cd9304c5" width="100px;" alt="icon"/><br>
 
 | Codinome | Framework | Linguagem | Plataforma |
 |---|---|---|---|
@@ -34,20 +34,23 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 
 
 ## Preview
-![Frame-Main](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/e4e0307c-161e-4ec1-a7a2-a3cf3ad500ad)
+![Frame-Main](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/5c241a4c-d588-4293-82a5-c55f8e332757)
+
 <br>
 <br>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/3fb8e5b4-e3f4-44bd-9cd5-8313ed8aab81" width="200px;" alt="icon"/>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/5caac5ed-35c9-4e3f-83c7-9ea00338020c" width="200px;" alt="icon"/>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/87165733-d132-4a74-91cb-72ebf8791d57" width="200px;" alt="icon"/>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/65ca0d52-b027-46ff-bc67-53a3f0cb6318" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/e93f234c-38a8-4d91-aaf4-835edd54d81a" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/dbfaa1c1-b235-42f9-b6b5-0924310888c6" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/e8cba24d-7ad5-4353-8452-87aa0a85f5a3" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/76094e95-36e9-4f44-b70b-38cea71478cb" width="200px;" alt="icon"/>
+
 <!--![invisible](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fdd70eea-978a-45e6-9482-e111043d9bb6)-->
 <br>
+<!--
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/5338432a-b2bf-4158-a4d2-9cacdeeacd30" width="200px;" alt="icon"/>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/b3e0e8af-e171-46e8-b117-7d5ab27ab557" width="200px;" alt="icon"/>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/d60f4e96-a916-4a15-a81d-7d64da62973d" width="200px;" alt="icon"/>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/f99a27d1-d759-44bb-bf22-d9a640b8cbcb" width="200px;" alt="icon"/>
-
+-->
 ## Pré-requisitos
 - [✔️] git
 - [✔️] VS code ou editor de código de sua preferência
