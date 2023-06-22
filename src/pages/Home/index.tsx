@@ -1,17 +1,19 @@
-import React, { useCallback, useState } from 'react';
-import { FlatList, ListRenderItemInfo, Keyboard, BackHandler } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { FlatList, ListRenderItemInfo, Keyboard, BackHandler, ToastAndroid, Alert } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Header } from '../../components/Header/Header';
 import { CardProps } from '../../components/Card/types';
 import { Card } from '../../components/Card/Card';
 import { Search } from './Search/Search';
+import { ListEmptyComponent } from './ListEmptyComponent/ListEmptyComponent';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { HomeScreenProps } from './types';
-import { AddNoteButton, Container, ShowListEmpty, SpaceItems } from './styles';
+import { AddNoteButton, Container, SpaceItems } from './styles';
 import AddNoteIcon from '@expo/vector-icons/AntDesign';
 
 export function HomeScreen() {
 
+  const backPressedRef = useRef<number>(0);
   const [data, setData] = useState<CardProps[]>([]);
   const [filteredNote, setFilteredNote] = useState<CardProps[]>([]);
   const [search, setSearch] = useState<string>('');
@@ -48,34 +50,51 @@ export function HomeScreen() {
     handleSearchButtonPress();
   }
 
-  function ListEmptyComponent() {
+  function renderItem({ item }: ListRenderItemInfo<CardProps>) {
     return (
-      <ShowListEmpty>
-        Você ainda não possui nenhuma nota...
-      </ShowListEmpty>
+      <Card {...item}
+        navigation={() => navigation.navigate('DetailsScreen', { id: item.id })}
+        onLongPress={handleLongPress}
+      />
     )
   }
 
-  function renderItem({ item }: ListRenderItemInfo<CardProps>) {
-    return <Card {...item}
-      navigation={() => navigation.navigate('DetailsScreen', { id: item.id })}
-    />
-  }
+  const handleLongPress = () => {
+    Alert.alert('Long press detected!');
+  };
 
-  const backAction = () => true;
+  const backAction = useCallback(() => {
+    const currentTime = new Date().getTime();
+
+    if (backPressedRef.current && currentTime - backPressedRef.current < 2000) {
+      BackHandler.exitApp();
+      return true;
+    }
+
+    ToastAndroid.show('Pressione novamente para sair', ToastAndroid.SHORT);
+
+    backPressedRef.current = currentTime;
+
+    return true;
+  }, []);
 
   useFocusEffect(useCallback(() => {
     handleFetchData();
     applyFilter();
-
     const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
     return () => backHandler.remove();
   }, [search]));
 
+  useEffect(() => {
+    return () => {
+      backPressedRef.current = 0;
+    };
+  }, []);
+
   return (
     <React.Fragment>
       <Container>
-        <Header />
+        <Header navigation={() => navigation.navigate('ProfileScreen')} />
         <SpaceItems>
           <Search
             value={searchInput}
