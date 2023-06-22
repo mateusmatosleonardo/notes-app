@@ -8,6 +8,7 @@ import { UpdateScreen } from "../pages/Update";
 import { RegisterScreen } from "../pages/Register";
 import { useUsersStore } from "../store/users/users";
 import { ProfileScreen } from "../pages/Profile";
+import { OnBoarding } from "../pages/OnBoarding";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createStackNavigator();
@@ -19,6 +20,7 @@ export function Routes() {
 
   useEffect(() => {
     actions.getStoredUserData().finally(() => setIsLoading(false));
+    AsyncStorage.removeItem("@userData")
   }, []);
 
   if (isLoading) {
@@ -28,7 +30,8 @@ export function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName={
-        user?.avatar_url !== '' && user?.name !== '' ? 'HomeScreen' : 'RegisterScreen'
+        user?.avatar_url === '' && user?.name === '' ? 'OnBoarding' :
+          user?.avatar_url !== '' || user?.name !== '' ? 'HomeScreen' : 'Register'
       } screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name="HomeScreen"
@@ -44,11 +47,14 @@ export function Routes() {
           name="UpdateScreen"
           component={UpdateScreen} />
         <Stack.Screen
-          name="RegisterScreen"
-          component={RegisterScreen} />
-        <Stack.Screen
           name="ProfileScreen"
           component={ProfileScreen} />
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen} />
+        <Stack.Screen
+          name="OnBoarding"
+          component={OnBoarding} />
       </Stack.Navigator>
     </NavigationContainer >
   )

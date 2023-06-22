@@ -7,4 +7,5 @@ export type RootStackParamsList = {
   DetailsScreen: { id: string | number[] | undefined };
   UpdateScreen: NoteState;
   ProfileScreen: undefined;
+  OnBoarding: undefined;
 };
