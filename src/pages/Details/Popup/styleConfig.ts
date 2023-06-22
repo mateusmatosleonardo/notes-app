@@ -2,7 +2,8 @@ import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 interface PopupStyledProps {
-  color: string;
+  color?: string;
+  bg?: string;
 }
 
 export const Container = styled.View`
@@ -27,23 +28,28 @@ export const PopupTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Inter_Medium};
   font-size: ${RFValue(18)}px;
   color: ${({ theme }) => theme.colors.primary.BLACK};
-  border-color: ${({ theme }) => theme.colors.primary.BLACK};
-  border-bottom-width: 1px;
+  background-color: #e4e4e4;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
   padding: 18px 0px;
   text-align: center;
 `;
 
 export const WrapperButtons = styled.View`
   width: 100%;
+  padding: 0px 8px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const Pressable = styled.Pressable`
+export const Pressable = styled.Pressable<PopupStyledProps>`
   justify-content: center;
   align-items: center;
   width: 49.5%;
+  border-radius: 6px;
+  margin: 10px 0px;
+  background-color: ${(p) => p.bg};
 `;
 
 export const Option = styled.Text<PopupStyledProps>`
@@ -51,10 +57,4 @@ export const Option = styled.Text<PopupStyledProps>`
   font-size: ${RFValue(13)}px;
   color: ${(p) => p.color};
   padding: 15px 0px;
-`;
-
-export const Separator = styled.View`
-  width: 1.5px;
-  height: 100%;
-  background-color: ${({ theme }) => theme.colors.primary.BLACK};
 `;

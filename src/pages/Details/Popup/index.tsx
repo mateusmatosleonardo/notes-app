@@ -6,7 +6,6 @@ import {
   PopupContainer,
   PopupTitle,
   Pressable,
-  Separator,
   WrapperButtons
 } from './styleConfig';
 import { useTheme } from 'styled-components';
@@ -25,12 +24,11 @@ export function Popup({ showPopup, handleCancel, handleDelete }: PopupProps) {
         <PopupContainer style={{ elevation: 4 }}>
           <PopupTitle>Deseja excluir esta anotação?</PopupTitle>
           <WrapperButtons>
-            <Pressable onPress={handleCancel}>
+            <Pressable onPress={handleCancel} bg='transparent'>
               <Option color={colors.primary.BLACK}>Cancelar</Option>
             </Pressable>
-            <Separator />
-            <Pressable onPress={handleDelete}>
-              <Option color={colors.primary.ERROR}>Excluir</Option>
+            <Pressable onPress={handleDelete} bg="#ff6961">
+              <Option color={colors.primary.WHITE}>Excluir</Option>
             </Pressable>
           </WrapperButtons>
         </PopupContainer>
