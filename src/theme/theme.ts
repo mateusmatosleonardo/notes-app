@@ -26,6 +26,7 @@ export const theme = {
       CORAL: "#FFA5A0",
       LILAC: "#E0CBEF",
       SAGE: "#C9D6CA",
+      BEIGE: "#F8E9D1",
     },
   },
   fonts: {

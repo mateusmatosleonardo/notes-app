@@ -15,24 +15,39 @@ const Stack = createStackNavigator();
 
 export function Routes() {
 
+  const [hasVisitedState, setHasVisitedState] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { actions, state: { user } } = useUsersStore();
 
+  const getVisitedStatus = async () => {
+    try {
+      const hasVisited = await AsyncStorage.getItem('@hasVisited');
+      setHasVisitedState(hasVisited);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    actions.getStoredUserData().finally(() => setIsLoading(false));
-    AsyncStorage.removeItem("@userData")
+    Promise.all([getVisitedStatus(), actions.getStoredUserData()])
+      .finally(() => setIsLoading(false));
   }, []);
 
   if (isLoading) {
     return null;
   }
 
+  if (!user) {
+    return null;
+  }
+
+
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={
-        user?.avatar_url === '' && user?.name === '' ? 'OnBoarding' :
-          user?.avatar_url !== '' || user?.name !== '' ? 'HomeScreen' : 'Register'
-      } screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+        initialRouteName={hasVisitedState === null ? 'OnBoarding' : 'HomeScreen'}
+        screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
