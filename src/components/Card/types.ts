@@ -23,4 +23,5 @@ export type CategoryColorsProps = {
   metas: string;
   dicas: string;
   trabalho: string;
+  lembrete: string;
 };

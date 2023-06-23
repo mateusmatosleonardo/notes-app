@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  Category,
-  CategoryCard,
-  Content,
-  InvisibleView,
-  TitleCard,
-  WrapperCard,
-  WrapperCategory,
-  WrapperTitleCard
-} from './styles';
+import * as Style from './styles';
 import { CardProps, CategoryColorsProps } from './types';
 import { useTheme } from 'styled-components';
 
@@ -33,23 +24,24 @@ export function Card({ title, content, category, navigation }: CardProps) {
     metas: colors.secondary.CORAL,
     dicas: colors.secondary.LILAC,
     trabalho: colors.secondary.SAGE,
+    lembrete: colors.secondary.BEIGE
   };
 
   const formattedTitle = category.charAt(0).toUpperCase() + category.slice(1);
 
   return (
-    <WrapperCard onPress={navigation} style={{ elevation: 1 }}>
-      <WrapperTitleCard>
-        <TitleCard numberOfLines={1}>{title}</TitleCard>
-      </WrapperTitleCard>
-      <Content numberOfLines={3}>{content}</Content>
-      <WrapperCategory>
-        <InvisibleView />
-        <CategoryCard
+    <Style.WrapperCard onPress={navigation} style={{ elevation: 1 }}>
+      <Style.WrapperTitleCard>
+        <Style.TitleCard numberOfLines={1}>{title}</Style.TitleCard>
+      </Style.WrapperTitleCard>
+      <Style.Content numberOfLines={3}>{content}</Style.Content>
+      <Style.WrapperCategory>
+        <Style.InvisibleView />
+        <Style.CategoryCard
           bg={categoryColors[category as keyof CategoryColorsProps]}>
-          <Category>{formattedTitle}</Category>
-        </CategoryCard>
-      </WrapperCategory>
-    </WrapperCard>
+          <Style.Category>{formattedTitle}</Style.Category>
+        </Style.CategoryCard>
+      </Style.WrapperCategory>
+    </Style.WrapperCard>
   )
 }

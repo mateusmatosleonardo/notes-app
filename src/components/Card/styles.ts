@@ -9,7 +9,7 @@ interface CategoryCardProps {
 const WIDTH = Dimensions.get("screen").width;
 
 export const WrapperCard = styled.Pressable`
-  width: ${WIDTH * 0.88}px;
+  width: 100%;
   padding: 12px 16px;
   margin-bottom: 8px;
   border-radius: 8px;
