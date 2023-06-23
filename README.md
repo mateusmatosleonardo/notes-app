@@ -38,10 +38,14 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 
 <br>
 <br>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/268e5eab-72ed-4cca-8501-bf8c93063349" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/1160aeba-9ee0-4e78-bb97-0433ab9267cf" width="200px;" alt="icon"/>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/e93f234c-38a8-4d91-aaf4-835edd54d81a" width="200px;" alt="icon"/>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/dbfaa1c1-b235-42f9-b6b5-0924310888c6" width="200px;" alt="icon"/>
-<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/e8cba24d-7ad5-4353-8452-87aa0a85f5a3" width="200px;" alt="icon"/>
 <img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/76094e95-36e9-4f44-b70b-38cea71478cb" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/455a2057-902e-409c-b8e1-58b35cc28e25" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/592c390f-9d43-4d20-b397-aafd6c164308" width="200px;" alt="icon"/>
+<img src="https://github.com/mateusmatosleonardo/notes-app/assets/73812069/54a24cc9-360c-489e-9333-1f92356bd4c3" width="200px;" alt="icon"/>
 
 <!--![invisible](https://github.com/mateusmatosleonardo/notes-app/assets/73812069/fdd70eea-978a-45e6-9482-e111043d9bb6)-->
 <br>
