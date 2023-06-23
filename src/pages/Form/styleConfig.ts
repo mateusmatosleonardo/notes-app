@@ -39,7 +39,7 @@ export const Invisible = styled.View`
 
 export const Form = styled.View`
   flex: 1;
-  padding: 0px 20px 20px 20px;
+  padding: 0px 20px 10px 20px;
 `;
 
 export const InputArea = styled.View`
@@ -77,6 +77,20 @@ export const WrapperPicker = styled.View`
 export const Footer = styled.View`
   width: 100%;
   padding: 0px 20px 20px 20px;
+`;
+
+export const TagWrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 0px 20px 10px 20px;
+`;
+
+export const TagText = styled.Text`
+  font-size: ${RFValue(13.5)}px;
+  font-family: ${({ theme }) => theme.fonts.Inter_Regular};
+  color: ${({ theme }) => theme.colors.primary.BLACK};
+  padding-right: 8px;
 `;
 
 export const styles = StyleSheet.create({
