@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
+import { StatusBar, StyleSheet } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { StatusBar } from "react-native";
 
 const statusBarHeight = StatusBar.currentHeight
   ? StatusBar.currentHeight + 0
@@ -12,15 +12,7 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.primary.WHITE};
 `;
 
-export const ShowListEmpty = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.Inter_SemiBold};
-  font-size: ${({ theme }) => RFValue(theme.sizes.NORMAL)}px;
-  text-align: center;
-  color: ${({ theme }) => theme.colors.primary.DARK_GREY};
-  padding: 20px 30px;
-`;
-
-export const ButtonAddNote = styled.TouchableOpacity`
+export const AddNoteButton = styled.TouchableOpacity`
   width: 60px;
   height: 60px;
   border-radius: 30px;
@@ -35,3 +27,22 @@ export const ButtonAddNote = styled.TouchableOpacity`
 export const SpaceItems = styled.View`
   padding: 0px 20px 10px 20px;
 `;
+
+export const GenericText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.Inter_Medium};
+  font-size: ${({ theme }) => RFValue(theme.sizes.NORMAL)}px;
+  color: ${({ theme }) => theme.colors.primary.BLACK};
+  text-align: center;
+`;
+
+export const NoResultsMessageText = styled(GenericText)``;
+
+export const EmptyListText = styled(GenericText)``;
+
+export const style = StyleSheet.create({
+  flatList: {
+    paddingTop: 10,
+    paddingBottom: 90,
+    paddingHorizontal: 20,
+  },
+});

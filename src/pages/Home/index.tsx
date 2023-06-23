@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { FlatList, ListRenderItemInfo, Keyboard, BackHandler, ToastAndroid, Alert } from 'react-native';
+import { FlatList, ListRenderItemInfo, Keyboard, BackHandler, ToastAndroid, ActivityIndicator } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { AddNoteButton, Container, SpaceItems, NoResultsMessageText, style, EmptyListText } from './styles';
 import { Header } from '../../components/Header/Header';
 import { CardProps } from '../../components/Card/types';
 import { Card } from '../../components/Card/Card';
 import { Search } from './Search/Search';
-import { ListEmptyComponent } from './ListEmptyComponent/ListEmptyComponent';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { HomeScreenProps } from './types';
-import { AddNoteButton, Container, SpaceItems } from './styles';
 import AddNoteIcon from '@expo/vector-icons/AntDesign';
 
 export function HomeScreen() {
@@ -18,16 +17,19 @@ export function HomeScreen() {
   const [filteredNote, setFilteredNote] = useState<CardProps[]>([]);
   const [search, setSearch] = useState<string>('');
   const [searchInput, setSearchInput] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigation = useNavigation<HomeScreenProps>();
 
   const { getItem } = useAsyncStorage('@savenote:notes');
 
   async function handleFetchData() {
+
     try {
       const response = await getItem();
       const data = response ? JSON.parse(response) : [];
       setData(data);
+      setIsLoading(false);
     } catch (e) {
       console.log(e);
     }
@@ -51,17 +53,16 @@ export function HomeScreen() {
   }
 
   function renderItem({ item }: ListRenderItemInfo<CardProps>) {
-    return (
-      <Card {...item}
-        navigation={() => navigation.navigate('DetailsScreen', { id: item.id })}
-        onLongPress={handleLongPress}
-      />
-    )
+    return <Card {...item} navigation={() => navigation.navigate('DetailsScreen', { id: item.id })} />
   }
 
-  const handleLongPress = () => {
-    Alert.alert('Long press detected!');
-  };
+  function NoResultsMessage() {
+    return <NoResultsMessageText>Nenhuma nota encontrada.</NoResultsMessageText>
+  }
+
+  function ListEmptyComponent() {
+    return <EmptyListText>Você não possui notas.</EmptyListText>
+  }
 
   const backAction = useCallback(() => {
     const currentTime = new Date().getTime();
@@ -103,20 +104,29 @@ export function HomeScreen() {
             handleSearchButtonPress={handleSearchButtonPress}
           />
         </SpaceItems>
-        {search.length > 0 ?
-          <FlatList
-            data={filteredNote}
-            keyExtractor={(item) => String(item.id)}
-            renderItem={renderItem}
-            contentContainerStyle={{ paddingTop: 10, paddingBottom: 90, alignItems: 'center' }}
-            ListEmptyComponent={() => ListEmptyComponent()}
-          /> : <FlatList
-            data={data}
-            keyExtractor={(item) => String(item.id)}
-            renderItem={renderItem}
-            contentContainerStyle={{ paddingTop: 10, paddingBottom: 90, alignItems: 'center' }}
-            ListEmptyComponent={() => ListEmptyComponent()}
-          />}
+        {isLoading ? (
+          <ActivityIndicator size={35} color="#151515" />
+        ) : (
+          <React.Fragment>
+            {search.length > 0 ? (
+              <FlatList
+                data={filteredNote}
+                keyExtractor={(item) => String(item.id)}
+                renderItem={renderItem}
+                contentContainerStyle={style.flatList}
+                ListEmptyComponent={filteredNote.length === 0 ? NoResultsMessage : null}
+              />
+            ) : (
+              <FlatList
+                data={data}
+                keyExtractor={(item) => String(item.id)}
+                renderItem={renderItem}
+                contentContainerStyle={style.flatList}
+                ListEmptyComponent={() => ListEmptyComponent()}
+              />
+            )}
+          </React.Fragment>
+        )}
         <AddNoteButton onPress={() => navigation.navigate('FormScreen')}>
           <AddNoteIcon name="plus" size={24} color="#fff" />
         </AddNoteButton>
