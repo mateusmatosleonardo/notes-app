@@ -96,15 +96,28 @@ Em seguida baixe o aplicativo Exgo Go e leia o QR code com a câmera ou insira a
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/mateusmatosleonardo">
-        <img src="https://avatars.githubusercontent.com/u/73812069?v=4" width="100px;" alt="photo by Mateus Leonardo"/><br>
+      <a href="https://m4teusdev.vercel.app">
+        <img src="https://avatars.githubusercontent.com/u/73812069?v=4" width="100px;" alt="photo by Mateus Leonardo" />
+        <br />
         <sub>
           <b>Mateus Leonardo</b>
         </sub>
+        <br />
       </a>
+      <a title="Code">💻</a>
     </td>
-  </tr>
-</table>
+    <td align="center">
+      <a href="https://github.com/linachervenkova">
+        <img src="https://avatars.githubusercontent.com/u/110020424?v=4" width="100px;" alt="photo by Lina Chervenkova"/>
+        <br />
+        <sub>
+          <b>Donavon West</b>
+        </sub>
+      </a>
+      <br />
+     <a title="Design">🎨</a>
+    </td>
+</table>  
 
 ## Créditos
 - Design original por **Nedelina Chervenkova**
