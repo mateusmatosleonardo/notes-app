@@ -57,18 +57,26 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 -->
 
 ## Pré-requisitos
-- [✔] Git
-- [✔] VS code ou editor de código de sua preferência
-- [✔] Java SDK
-- [✔] Expo CLI
-- [✔] Android SDK
-- [✔] NodeJS
-- [✔] Android Virtual Device ou Dispositivo físico
+
+ ✅ Git
+ <br>
+ ✅ VS code ou editor de código de sua preferência
+ <br>
+ ✅ Java SDK
+ <br>
+ ✅ Expo CLI
+ <br>
+ ✅ Android SDK
+ <br>
+ ✅ NodeJS
+ <br>
+ ✅ Android Virtual Device ou Dispositivo físico
+ <br>
 
 ## Clonando repositório
 Após todas as dependências atendidas e instaladas na sua máquina, basta clonar o repositório com o seguindo comando:
 <br>
-`git clone git@github.com:mateusmatosleonardo/notes-app.git`
+`git clone git@github.com:mateusmatosleonardo/notesapp.git`
 <br>
 `cd notes-app`
 
