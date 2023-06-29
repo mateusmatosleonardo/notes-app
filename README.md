@@ -57,13 +57,13 @@ Bem-vindo ao meu aplicativo de gerenciamento de notas! O aplicativo é projetado
 -->
 
 ## Pré-requisitos
-- [✔️] git
-- [✔️] VS code ou editor de código de sua preferência
-- [✔️] Java SDK
-- [✔️] Expo CLI
-- [✔️] Android SDK
-- [✔️] NodeJS
-- [✔️] Android Virtual Device ou Dispositivo físico 
+- [✔] Git
+- [✔] VS code ou editor de código de sua preferência
+- [✔] Java SDK
+- [✔] Expo CLI
+- [✔] Android SDK
+- [✔] NodeJS
+- [✔] Android Virtual Device ou Dispositivo físico
 
 ## Clonando repositório
 Após todas as dependências atendidas e instaladas na sua máquina, basta clonar o repositório com o seguindo comando:
