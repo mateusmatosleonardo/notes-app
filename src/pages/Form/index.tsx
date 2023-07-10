@@ -74,7 +74,6 @@ export function FormScreen() {
           <Style.Touch onPress={() => navigation.goBack()}>
             <ArrowLeft name='arrowleft' color={colors.primary.BLACK} size={22} />
           </Style.Touch>
-          <Style.Invisible />
         </Style.Header>
         <Style.KeyboardDismiss onPress={Keyboard.dismiss}>
           <Style.Form>
