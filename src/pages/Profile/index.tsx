@@ -33,11 +33,11 @@ export function ProfileScreen() {
       quality: 1,
     });
 
-    if (!result.cancelled) {
-      setUserData({ ...userData, avatar_url: result.uri });
+    if (!result.canceled) {
+      setUserData({ ...userData, avatar_url: result.assets[0].uri });
       await AsyncStorage.setItem('@userData', JSON.stringify({
         ...userData,
-        avatar: result.uri,
+        avatar: result.assets[0].uri,
       }));
     }
   };

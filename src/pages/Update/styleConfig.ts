@@ -39,7 +39,7 @@ export const Invisible = styled.View`
 
 export const Form = styled.View`
   flex: 1;
-  padding: 0px 20px 20px 20px;
+  padding: 6px 20px 10px 20px;
 `;
 
 export const InputArea = styled.View`
@@ -47,11 +47,6 @@ export const InputArea = styled.View`
   align-items: center;
   width: 100%;
   height: 48px;
-  /*
-  border-radius: 8px;
-  border-width: 1px;
-  border-color: ${({ theme }) => theme.colors.primary.DARK_GREY};
-  */
 `;
 
 export const KeyboardDismiss = styled.Pressable`
