@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "NoteManager",
-    "slug": "NoteManager",
+    "name": "Notas",
+    "slug": "Notas",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -32,7 +32,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "147b4936-8f04-447b-b2ac-10c0769e0545"
+        "projectId": "5184f0e9-1b1b-408f-b6ba-275d1d826aac"
       }
     }
   }
