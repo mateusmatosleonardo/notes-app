@@ -119,7 +119,7 @@ Em seguida baixe o aplicativo Exgo Go e leia o QR code com a câmera ou insira a
         <img src="https://avatars.githubusercontent.com/u/110020424?v=4" width="100px;" alt="photo by Lina Chervenkova"/>
         <br />
         <sub>
-          <b>Donavon West</b>
+          <b>Lina Chervenkova</b>
         </sub>
       </a>
       <br />
